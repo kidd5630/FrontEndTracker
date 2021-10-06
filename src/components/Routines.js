@@ -1,12 +1,13 @@
 import React from 'react';
 
-const Routines = (props) => {
-    const { baseURL } = props;
-	
-    return <div className="routines">
-        <h1>Routines</h1>
-        {baseURL}
-    </div>
+const Routines = () => {
+    return (
+    <>
+        <div className="routines">
+            <h1>Routines</h1>
+        </div>
+    </>
+    )
 }
 
 export default Routines;
