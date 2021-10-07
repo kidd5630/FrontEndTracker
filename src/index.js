@@ -5,26 +5,50 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {
 	Header,
 	Footer,
-	// Routines,
+	Routines,
 	Register,
 	Home,
-	Login
+	Login,
+	Activities
 } from './components';
 import {
     getCurrentUserToken,
     getCurrentUsername
 } from './auth';
+import { fetchAllActivities,
+		BASE_URL
+ } from './api';
 
 const App = () => {
 	
-	// const [allPosts, setAllPosts]= useState([]);
+	const [allActivities, setAllActivities]= useState([]);
     const [userToken, setUserToken] = useState(getCurrentUserToken());
     const [myUsername, setMyUsername] = useState(getCurrentUsername());
     const [myPassword, setMyPassword] = useState('');
     // const [postDeleted, setPostDeleted] = useState(0);
     // const [myPostsList, setMyPostsList] = useState([]);
-    // const [selectedPost, setSelectedPost] = useState(getPostId());
+    const [selectedAct, setSelectedAct] = useState(getActId());
 	
+
+
+	useEffect(() => {
+        fetchAllActivities()
+          .then((allActivities) => {
+            setAllActivities(allActivities);
+          })
+          .catch(error => console.error(error))
+    });
+	
+	function activityID(act_ID) {
+        localStorage.removeItem('actId');
+        localStorage.setItem('actId', JSON.stringify(act_ID));
+      }
+	  function getActId() {
+        const selectedActID = JSON.parse(localStorage.getItem('actId'));
+        return selectedActID;
+    }
+
+
 	return (
 		<Router>
 			<div className="app">
@@ -33,16 +57,54 @@ const App = () => {
 				userToken={userToken}
 				setUserToken={setUserToken}
 				setMyUsername={setMyUsername}/>	
+
+
 				{userToken
 				?
-
-				<Home 
-				userToken={userToken}
-				myUsername={myUsername} />
-					
-				:
+				(<div>
+					<Switch>	
+						<Route exact path ="/home">
+							<Home 
+								userToken={userToken}
+								myUsername={myUsername} />
+						</Route>
+						<Route path ="/myroutines">
+							<Routines
+								userToken={userToken}
+								myUsername={myUsername} />
+						</Route>
+						<Route path ="/activities">
+							<Activities 
+								userToken={userToken}
+								myUsername={myUsername}
+								allActivities={allActivities}
+								setAllActivities={setAllActivities}
+								selectedAct={selectedAct}
+								setSelectedAct={setSelectedAct}
+								activityID={activityID}/>
+						</Route>
+					</Switch>
+				</div>)	
+				
+				
+				: 
 				(<div>
 					<Switch>
+					<Route path ="/routines">
+							<Routines
+								userToken={userToken}
+								myUsername={myUsername} />
+						</Route>
+						<Route path ="/activities">
+							<Activities 
+								serToken={userToken}
+								myUsername={myUsername}
+								allActivities={allActivities}
+								setAllActivities={setAllActivities}
+								selectedAct={selectedAct}
+								setSelectedAct={setSelectedAct}
+								activityID={activityID}/>
+						</Route>
 						<Route path="/register">
 							<Register 
 								setUserToken={setUserToken}

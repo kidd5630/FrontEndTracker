@@ -3,7 +3,7 @@ export const BASE_URL = 'https://fitnesstrac-kr.herokuapp.com/api';
 
 export async function fetchResgisterUser(url, username, password) {
     try {
-        const response = await fetch(`${BASE_URL}/users/register`, {
+        const response = await fetch(`${url}/users/register`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -37,4 +37,38 @@ export async function fetchLoginUser(url, username, password) {
     } catch (error) {
         console.error(error);
       }   
+}
+
+export async function fetchAllActivities(){
+    try{
+        const response = await fetch(`${BASE_URL}/activities`)
+        const results = await response.json()
+        const activities = await results
+        return activities
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function createActivity( url, userToken, name, description) {
+    const actObj = {
+        "name": name,
+        "description": description
+    } 
+    try {
+        const response = await fetch(`${url}/activities`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + userToken
+            },
+            body: JSON.stringify(
+                actObj  
+            )
+        })
+        const data = await response.json();
+        return data
+    } catch (error) {
+        console.error(error);
+    } 
 }

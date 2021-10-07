@@ -17,6 +17,7 @@ const Login = ({setMyPassword, myPassword, setMyUsername, myUsername, setUserTok
             const results = await fetchLoginUser(BASE_URL, myUsername, myPassword);
             if(results.user) {
                 const token = await results.token;
+                console.log("this is your token", token)
                 setUserToken(token);
                 setMyUsername(myUsername);
                 localStorage.setItem('userToken', token);

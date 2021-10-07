@@ -8,12 +8,12 @@ let history = useHistory()
         <>
         <div id="header">
         {userToken? <nav>
-            <div className="profileBox">
+            <div className="header">
                 <ul>
-                    <Link to="/">
+                    <Link to="/home">
                     <li className="navBtn">Home</li>
                     </Link>
-                    <Link to="/routines">
+                    <Link to="/myroutines">
                     <li className="navBtn">My Routines</li>
                     </Link>
                     <Link to="/activities">
@@ -30,6 +30,7 @@ let history = useHistory()
             </div>
             </nav>:
             <nav>
+                <div className="header">
                 <ul>
                     <Link to="/">
                     <li className="navBtn">Home</li>
@@ -41,6 +42,7 @@ let history = useHistory()
                     <li className="navBtn">Activities</li>
                     </Link>
                 </ul>
+                </div>
             </nav>}
     </div>
     </>

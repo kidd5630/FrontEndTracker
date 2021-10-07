@@ -4,6 +4,11 @@
 	box-sizing: border-box;
 } 
 
-#root{
-    color: red;
+
+.activity{
+	margin-top: 15px;
+	border-top: solid gray 5px;
+    width: 100vw;
+    overflow: scroll;
+    height: 80vh;
 }
