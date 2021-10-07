@@ -29,20 +29,19 @@ const App = () => {
 		<Router>
 			<div className="app">
 				
-				<Header 
+			<Header 
 				userToken={userToken}
 				setUserToken={setUserToken}
-				setMyUsername={setMyUsername}/>
-
+				setMyUsername={setMyUsername}/>	
 				{userToken
 				?
-					<Home 
-						userToken={userToken}
-						myUsername={myUsername} />
+
+				<Home 
+				userToken={userToken}
+				myUsername={myUsername} />
 					
 				:
-				(<>
-				<div>
+				(<div>
 					<Switch>
 						<Route path="/register">
 							<Register 
@@ -68,8 +67,7 @@ const App = () => {
 						
 					</Switch>
 				<Footer />
-				</div>
-				</>)
+				</div>)
 				}
 				
 				
