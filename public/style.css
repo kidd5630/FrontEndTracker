@@ -12,3 +12,10 @@
     overflow: scroll;
     height: 80vh;
 }
+
+.editFeild-inactive{
+    display: none;
+}
+.editFeild-active{
+    display: active;
+}

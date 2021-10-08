@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import MakeActivities from './MakeActivities';
 
-const Activities = ({userToken, myUsername, allActivities, setAllActivities, selectedAct, setSelectedAct,activityID}) => {
+const Activities = ({userToken, allActivities, setAllActivities, setSelectedAct,activityID}) => {
   
   return ( 
     <div className="allActivitiesContainer">

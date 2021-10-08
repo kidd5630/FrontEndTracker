@@ -9,7 +9,8 @@ import {
 	Register,
 	Home,
 	Login,
-	Activities
+	Activities,
+	IndividualActivity
 } from './components';
 import {
     getCurrentUserToken,
@@ -73,7 +74,7 @@ const App = () => {
 								userToken={userToken}
 								myUsername={myUsername} />
 						</Route>
-						<Route path ="/activities">
+						<Route exact path ="/activities">
 							<Activities 
 								userToken={userToken}
 								myUsername={myUsername}
@@ -83,10 +84,18 @@ const App = () => {
 								setSelectedAct={setSelectedAct}
 								activityID={activityID}/>
 						</Route>
+						<Route path="/activities/:id">
+                            <IndividualActivity 
+                                myUsername={myUsername}
+                                allActivities={allActivities}
+                                setAllActivities={setAllActivities}
+                                userToken={userToken}
+                                selectedAct={selectedAct}
+                                // deleteItem={deleteItem}
+                            /> 
+                        </Route>
 					</Switch>
 				</div>)	
-				
-				
 				: 
 				(<div>
 					<Switch>
@@ -95,7 +104,7 @@ const App = () => {
 								userToken={userToken}
 								myUsername={myUsername} />
 						</Route>
-						<Route path ="/activities">
+						<Route exact path ="/activities">
 							<Activities 
 								serToken={userToken}
 								myUsername={myUsername}
@@ -105,6 +114,16 @@ const App = () => {
 								setSelectedAct={setSelectedAct}
 								activityID={activityID}/>
 						</Route>
+						<Route path="/activities/:id">
+                            <IndividualActivity
+                                myUsername={myUsername}
+                                allActivities={allActivities}
+                                setAllActivities={setAllActivities}
+                                userToken={userToken}
+                                selectedAct={selectedAct}
+                                // deleteItem={deleteItem}
+                            /> 
+                        </Route>
 						<Route path="/register">
 							<Register 
 								setUserToken={setUserToken}
