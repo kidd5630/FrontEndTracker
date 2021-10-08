@@ -1,16 +1,18 @@
 import React from 'react';
-import { Routineactivitysubcomp } from '.';
+import { Routineactivitysubcomp, RoutineDelete } from '..';
 
-const Routines = ({routine}) => {
-
+const Routines = ({routine, usertoken}) => {
+    
     return (
      <div>
          <div className="RoutineHeader">
              Routine:  
-         <div style={{display:"inline"}}> {routine.name} </div>
+         <div style={{display: "inline"}}> {routine.name} </div>
          <div style={{display: "inline"}}> Goal: {routine.goal} </div>
          <div style={{display: "inline"}}>By {routine.creatorName}</div>
-         </div>
+         {usertoken? <div style={{display: "inline"}}> <RoutineDelete routineToDelete ={routine.id} usertoken={usertoken}/></div>: null}
+        </div>
+         
          <div>
              {routine.activities.map((activity)=>
              {return <Routineactivitysubcomp
@@ -20,6 +22,7 @@ const Routines = ({routine}) => {
             }
              )}
          </div>
+         
      </div>
        
     )

@@ -16,6 +16,9 @@ let history = useHistory()
                     <Link to="/myroutines">
                     <li className="navBtn">My Routines</li>
                     </Link>
+                    <Link to="/routines">
+                    <li className="navBtn">All Routines</li>
+                    </Link>
                     <Link to="/activities">
                     <li className="navBtn">Activities</li>
                     </Link>

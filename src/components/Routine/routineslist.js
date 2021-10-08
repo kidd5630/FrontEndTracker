@@ -16,6 +16,7 @@ const Routineslist = ({userToken, myUsername, allroutines}) => {
             {allroutines.map((routine)=>
             {return (<Routines
             routine ={routine} 
+            usertoken ={userToken}
             key ={routine.id}
             />)}
             )}
