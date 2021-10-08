@@ -8,3 +8,4 @@ export { default as Activities } from './Activities';
 export { default as Routineslist} from './Routine/routineslist';
 export { default as Routineactivitysubcomp} from './Routine/Routineactivitysubcomp';
 export { default as RoutineDelete} from './Routine/RoutineDelete'
+export { default as IndividualActivity } from './IndividualActivity';

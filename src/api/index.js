@@ -98,4 +98,45 @@ export async function fetchUsersRoutines(username){
     }catch(error){
         console.error(error)
     }
+    
+export async function editThisActivity( url, selectedAct, userToken, name, description) {
+    const actObj = { } 
+    if(name) {
+        actObj["name"] = name;
+    }
+    if(description) {
+        actObj["description"] = description;
+    }
+    try {
+        const response = await fetch(`${url}/activities/${selectedAct}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': "Bearer " + userToken
+            },
+            body: JSON.stringify(
+                actObj
+            )
+        })
+        const data = await response.json();
+        return data
+    } catch (error) {
+        console.error(error);
+    } 
+}
+
+
+export async function routinesFeature(url, selectedAct) {
+    
+    try {
+        const response = await fetch(`${url}/activities/${selectedAct}/routines`, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        const data = await response.json();
+        return data
+    } catch (error) {
+        console.error(error);
+    } 
 }
