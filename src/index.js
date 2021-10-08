@@ -22,6 +22,7 @@ import { fetchAllActivities,
 		fetchAllRoutines,
 		fetchUsersRoutines
  } from './api';
+import CreateRoutine from './components/Routine/CreateRoutine';
 
 const App = () => {
 	
@@ -83,7 +84,7 @@ const App = () => {
 								userToken={userToken}
 								myUsername={myUsername} />
 						</Route>
-						<Route path ="/myroutines">
+						<Route exact path ="/myroutines">
 							<Routineslist
 								userToken={userToken}
 								myUsername={myUsername}
@@ -112,6 +113,9 @@ const App = () => {
                                 selectedAct={selectedAct}
                                 // deleteItem={deleteItem}
                             /> 
+                        </Route>
+						<Route path="/myroutines/new">
+                            <CreateRoutine/>
                         </Route>
 					</Switch>
 				</div>)	

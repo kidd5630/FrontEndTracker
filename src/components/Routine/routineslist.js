@@ -1,5 +1,7 @@
 import React from 'react';
+import CreateRoutine from './CreateRoutine';
 import Routines  from './Routines';
+import { Link } from 'react-router-dom';
 const Routineslist = ({userToken, myUsername, allroutines}) => {
   console.log(myUsername, allroutines[0])
     return (
@@ -12,6 +14,9 @@ const Routineslist = ({userToken, myUsername, allroutines}) => {
               <h1>All Routines</h1>
             </div>
         }
+        {userToken? <Link to={`/myroutines/new`} className="activityLink">
+           <div>Create routine</div>
+                  </Link>: null}
           <div>
             {allroutines.map((routine)=>
             {return (<Routines

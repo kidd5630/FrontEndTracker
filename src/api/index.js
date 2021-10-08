@@ -97,8 +97,8 @@ export async function fetchUsersRoutines(username){
         return results
     }catch(error){
         console.error(error)
-    }
-    
+    }}
+
 export async function editThisActivity( url, selectedAct, userToken, name, description) {
     const actObj = { } 
     if(name) {
