@@ -42,6 +42,3 @@ const Activities = ({userToken, allActivities, setAllActivities, setSelectedAct,
   
     
 export default Activities;
-
-
-    
