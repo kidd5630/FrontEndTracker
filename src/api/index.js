@@ -72,3 +72,30 @@ export async function createActivity( url, userToken, name, description) {
         console.error(error);
     } 
 }
+
+export async function fetchAllRoutines(){
+    try{
+        const response = await fetch(`${BASE_URL}/routines`)
+        const results = await response.json()
+        return results
+    }catch(error){
+        console.error(error)
+    }
+}
+
+export async function fetchUsersRoutines(username){
+      try{
+          const headers = {
+            headers: {
+            "Content-Type": "application/json",
+            // Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIyNCwidXNlcm5hbWUiOiJ0b2J5IiwiaWF0IjoxNjMzNjUyMjA5LCJleHAiOjE2MzQyNTcwMDl9.kiVHm63giZdMTwcXWwwyxjwkVxEH3bS0izjlhvs9rmw`,
+            },
+        };
+        const response = await fetch(`${BASE_URL}/users/albert/routines`, headers)
+        const results = await response.json()
+        console.log(results, "usersroutines")
+        return results
+    }catch(error){
+        console.error(error)
+    }
+}

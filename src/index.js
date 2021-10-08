@@ -6,6 +6,7 @@ import {
 	Header,
 	Footer,
 	Routines,
+	Routineslist,
 	Register,
 	Home,
 	Login,
@@ -16,7 +17,9 @@ import {
     getCurrentUsername
 } from './auth';
 import { fetchAllActivities,
-		BASE_URL
+		BASE_URL,
+		fetchAllRoutines,
+		fetchUsersRoutines
  } from './api';
 
 const App = () => {
@@ -25,6 +28,8 @@ const App = () => {
     const [userToken, setUserToken] = useState(getCurrentUserToken());
     const [myUsername, setMyUsername] = useState(getCurrentUsername());
     const [myPassword, setMyPassword] = useState('');
+	const [allroutines, setallroutines] = useState([])
+	const [usersRoutines, setusersRoutines] =useState([])
     // const [postDeleted, setPostDeleted] = useState(0);
     // const [myPostsList, setMyPostsList] = useState([]);
     const [selectedAct, setSelectedAct] = useState(getActId());
@@ -37,7 +42,17 @@ const App = () => {
             setAllActivities(allActivities);
           })
           .catch(error => console.error(error))
-    });
+		fetchAllRoutines()
+		.then((routines)=>{
+			setallroutines(routines)
+		})
+		.catch((error)=>{console.error(error)})
+		fetchUsersRoutines()
+		.then((routine)=> {
+			setusersRoutines(routine)
+		})
+		.catch((error)=>{console.error(error)})
+    }, []);
 	
 	function activityID(act_ID) {
         localStorage.removeItem('actId');
@@ -58,7 +73,6 @@ const App = () => {
 				setUserToken={setUserToken}
 				setMyUsername={setMyUsername}/>	
 
-
 				{userToken
 				?
 				(<div>
@@ -69,9 +83,14 @@ const App = () => {
 								myUsername={myUsername} />
 						</Route>
 						<Route path ="/myroutines">
-							<Routines
+							<Routineslist
 								userToken={userToken}
-								myUsername={myUsername} />
+								myUsername={myUsername}
+								allroutines={usersRoutines} />
+						</Route>
+						<Route path ="/routines">
+							<Routineslist
+								allroutines={allroutines} />
 						</Route>
 						<Route path ="/activities">
 							<Activities 
@@ -91,9 +110,10 @@ const App = () => {
 				(<div>
 					<Switch>
 					<Route path ="/routines">
-							<Routines
+							<Routineslist
 								userToken={userToken}
-								myUsername={myUsername} />
+								myUsername={myUsername}
+								allroutines={allroutines} />
 						</Route>
 						<Route path ="/activities">
 							<Activities 
