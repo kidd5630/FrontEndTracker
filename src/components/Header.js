@@ -35,7 +35,7 @@ let history = useHistory()
             <nav>
                 <div className="header">
                 <ul>
-                    <Link to="/">
+                    <Link to="/home">
                     <li className="navBtn">Home</li>
                     </Link>
                     <Link to="/routines">

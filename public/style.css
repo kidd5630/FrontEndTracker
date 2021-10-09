@@ -19,3 +19,39 @@
 .editFeild-active{
     display: active;
 }
+
+.RoutineHeader{
+    display: grid;
+    font-size: larger;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.RoutineDescription{
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2px;
+}
+.deleteButton{
+    grid-column: 3/4;
+}
+.innerbox{
+    display: flex;
+    
+}
+.innerboxText{
+    margin-left: 5px;
+    
+}
+.inputs{
+    display: grid;
+    grid-template-columns: max-content  max-content;
+    grid-gap: 5px;
+}
+.inputs label{
+    text-align: right;
+}
+
+#activitiesselect{
+    width: 200px;
+    text-overflow: ellipsis;
+}

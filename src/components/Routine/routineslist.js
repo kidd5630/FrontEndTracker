@@ -1,10 +1,9 @@
 import React from 'react';
-import CreateRoutine from './CreateRoutine';
 import Routines  from './Routines';
 import { Link } from 'react-router-dom';
-const Routineslist = ({userToken, myUsername, allroutines}) => {
-  console.log(myUsername, allroutines[0])
-    return (
+const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setallroutines, setusersRoutines, pageRoutines, usersRoutines}) => {
+  console.log(pageRoutines[0])
+  return (
         <div>
         {userToken ?
             <div className="loggedInMessage">
@@ -18,11 +17,18 @@ const Routineslist = ({userToken, myUsername, allroutines}) => {
            <div>Create routine</div>
                   </Link>: null}
           <div>
-            {allroutines.map((routine)=>
+            {pageRoutines.map((routine)=>
             {return (<Routines
+            pageRoutines={pageRoutines}
+          
             routine ={routine} 
-            usertoken ={userToken}
+            userToken ={userToken}
             key ={routine.id}
+            allRoutines={allRoutines}
+            usersRoutines={usersRoutines}
+            setallroutines={setallroutines}
+            setusersRoutines={setusersRoutines}
+            allActivities={allActivities}
             />)}
             )}
           </div>

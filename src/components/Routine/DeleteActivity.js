@@ -18,10 +18,10 @@ const Button = styled.button`
 `;
 
 
-const RoutineDelete= ({routineToDelete, usertoken, setallroutines, setusersRoutines, allRoutines, usersRoutines}) => {
+const DeleteActivity= ({activityToDelete, usertoken, setallroutines, setusersRoutines, allRoutines, usersRoutines}) => {
 
     const deleteHandler = async (routineToDelete) =>{
-        const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines/${routineToDelete}`, {
+        const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routine_activities/${activityToDelete}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ const RoutineDelete= ({routineToDelete, usertoken, setallroutines, setusersRouti
     )
 }
 
-export default RoutineDelete;
+export default DeleteActvity;
 // const deleteHandler = async (postToDelete) => {
 //     const response = await fetch(
 //       `https://strangers-things.herokuapp.com/api/2105-VPI-RM-WEB-PT/posts/${postToDelete}`,

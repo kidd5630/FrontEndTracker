@@ -49,7 +49,7 @@ const App = () => {
 			setallroutines(routines)
 		})
 		.catch((error)=>{console.error(error)})
-		fetchUsersRoutines()
+		fetchUsersRoutines(myUsername, userToken)
 		.then((routine)=> {
 			setusersRoutines(routine)
 		})
@@ -88,11 +88,17 @@ const App = () => {
 							<Routineslist
 								userToken={userToken}
 								myUsername={myUsername}
-								allroutines={usersRoutines} />
+								pageRoutines={usersRoutines}
+								setallroutines={setallroutines}
+								allRoutines={allroutines}
+								usersRoutines={usersRoutines}
+								setusersRoutines={setusersRoutines}
+								allActivities={allActivities}
+								/>
 						</Route>
 						<Route path ="/routines">
 							<Routineslist
-								allroutines={allroutines} />
+								pageRoutines={allroutines} />
 						</Route>
 						<Route exact path ="/activities">
 							<Activities 
@@ -115,7 +121,14 @@ const App = () => {
                             /> 
                         </Route>
 						<Route path="/myroutines/new">
-                            <CreateRoutine/>
+                            <CreateRoutine
+								userToken={userToken} 
+								allroutines={allroutines} 
+								setallroutines = {setallroutines}
+								usersRoutines= {usersRoutines}
+								setusersRoutines= {setusersRoutines}
+								myUsername ={myUsername}
+								/>
                         </Route>
 					</Switch>
 				</div>)	
@@ -166,10 +179,12 @@ const App = () => {
 								setUserToken={setUserToken}
 							/>
 						</Route>
+						<Route path="/myroutines/new">
+                            <CreateRoutine userToken={userToken}/>
+                        </Route>
 						<Route exact path="/">
 							<Home />
 						</Route>
-						
 					</Switch>
 				<Footer />
 				</div>)

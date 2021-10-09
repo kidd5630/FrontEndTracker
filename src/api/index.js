@@ -83,17 +83,16 @@ export async function fetchAllRoutines(){
     }
 }
 
-export async function fetchUsersRoutines(username){
+export async function fetchUsersRoutines(username, userToken){
       try{
           const headers = {
             headers: {
             "Content-Type": "application/json",
-            // Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIyNCwidXNlcm5hbWUiOiJ0b2J5IiwiaWF0IjoxNjMzNjUyMjA5LCJleHAiOjE2MzQyNTcwMDl9.kiVHm63giZdMTwcXWwwyxjwkVxEH3bS0izjlhvs9rmw`,
+             Authorization: `Bearer ${userToken}`,
             },
         };
-        const response = await fetch(`${BASE_URL}/users/albert/routines`, headers)
+        const response = await fetch(`${BASE_URL}/users/${username}/routines`, headers)
         const results = await response.json()
-        console.log(results, "usersroutines")
         return results
     }catch(error){
         console.error(error)
