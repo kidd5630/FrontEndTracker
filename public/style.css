@@ -4,7 +4,6 @@
 	box-sizing: border-box;
 } 
 
-
 .activity{
 	margin-top: 15px;
 	border-top: solid gray 5px;
@@ -19,3 +18,23 @@
 .editFeild-active{
     display: active;
 }
+/* 
+#header {
+    width: 100%;
+    background-color: rgb(107, 231, 231);
+    text-decoration: none;   
+    display:inline-flex;
+    flex-direction: row;
+    height: 19vh;
+    justify-content: space-between;
+    padding: 4px;
+    align-items: center;
+    box-shadow: 1px 1px 15px rgb(150, 223, 252);
+    position: fixed;
+    z-index: 1;
+} */
+/* .header{
+    color: rgb(2, 3, 3);
+    text-decoration: underline;
+    font-family: Indie Flower;
+} */

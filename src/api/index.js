@@ -126,7 +126,7 @@ export async function editThisActivity( url, selectedAct, userToken, name, descr
 }
 
 
-export async function routinesFeature(url, selectedAct) {
+export async function fetchRoutinesFeature(url, selectedAct) {
     
     try {
         const response = await fetch(`${url}/activities/${selectedAct}/routines`, {
