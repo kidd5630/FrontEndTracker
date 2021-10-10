@@ -2,7 +2,7 @@ import React from 'react';
 import Routines  from './Routines';
 import { Link } from 'react-router-dom';
 const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setallroutines, setusersRoutines, pageRoutines, usersRoutines}) => {
-  console.log(pageRoutines[0])
+  console.log(usersRoutines,"kkk")
   return (
         <div>
         {userToken ?
@@ -20,7 +20,6 @@ const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setall
             {pageRoutines.map((routine)=>
             {return (<Routines
             pageRoutines={pageRoutines}
-          
             routine ={routine} 
             userToken ={userToken}
             key ={routine.id}

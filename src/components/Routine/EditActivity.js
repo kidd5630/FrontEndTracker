@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link, Redirect } from "react-router-dom";
@@ -5,9 +6,7 @@ import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router";
-
-
-
+import EditActivity from "../EditActivity";
 
 
 const Modal = styled.div`
@@ -89,60 +88,59 @@ const FooterButton = styled.div`
 `;
 
 
-const AddRoutine = ({addShow, setaddShow, routine, setupdateroutine, updateroutine, routineToDelete, userToken,  setallroutines, setusersRoutines, allRoutines, usersRoutines, allActivities}) =>{
+const EditRoutineActivity = ({EditShow, setEditShow, routine, setupdateroutine, updateroutine, routineToDelete, userToken, activitytoEdit, allActivities}) =>{
     const [createSuccess, setcreateSucess] = useState(false)
-    const [activityId, setactivityId] = useState('')
     const [count, setCount]= useState('')
     const [duration, setDuration]= useState('')
     const AddHandler = async (e)=>{
-    e.preventDefault()
-    try{
-        const url = `http://fitnesstrac-kr.herokuapp.com/api/routines/${routineToDelete}/activities`
-        setcreateSucess(false)
-        const response = await fetch(url,{
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${userToken}`
-                },
-                body: JSON.stringify({
-                        activityId: activityId,
-                        count: count, 
-                        duration: duration
-                    })
-        })
-        const data = await response.json();
-        if(data){
-            const newobj = allActivities.find((x)=> x.id==activityId)
-            newobj.count = parseInt(count);
-            newobj.duration = parseInt(duration)
-            const objInd = usersRoutines.findIndex((x)=> x.id==routineToDelete)
-            console.log('hereeee',usersRoutines[objInd])
-            usersRoutines[objInd].activities.push(newobj)
-            setaddShow(false)
+        e.preventDefault()
+        try{
+            const url = `http://fitnesstrac-kr.herokuapp.com/api/routine_activities/${activitytoEdit}`
+            setcreateSucess(false)
+            const response = await fetch(url,{
+                    method: "PATCH",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${userToken}`
+                    },
+                    body: JSON.stringify({
+                            ...(count && {count: count}), 
+                            ...(duration && {duration: duration})
+                        })
+            })
+            const data = await response.json();
+            console.log(data)
+            console.log(updateroutine,">>>>>>>>>>>>>>>")
+            if(data){
+                const newobj = updateroutine.find((x)=> x.routineActivityId==activitytoEdit)
+                console.log(newobj,"KLKK")
+                count? newobj.count = parseInt(count):null
+                duration? newobj.duration = parseInt(duration): null
+                console.log(newobj,">>>>>????")
+                const index = updateroutine.findIndex((x)=> x.routineActivityId==activitytoEdit)
+                const map = updateroutine.map(obj => obj.routineActivityId==activitytoEdit? newobj: obj)
+                console.log(map,"IT WORK?????")
+                setupdateroutine(map)
+                // newobj.count = parseInt(count);
+                // newobj.duration = parseInt(duration)
+                // const objInd = usersRoutines.findIndex((x)=> x.id==routineToDelete)
+                // usersRoutines[objInd].activities.push(newobj)
+
+                setEditShow(false)
+            }
+        }catch(error){
+            console.error("this is the error", error)
         }
-    }catch(error){
-        console.error("this is the error", error)
-    }
 }
 
-const content =  addShow && (
+const content =  EditShow && (
           <Modal>
             <Content>
-            <section className="Add to Routine">
-            <Heading>{<h3>Add Activity</h3>}</Heading>
+            <section className="Editactivity">
+            <Heading>{<h3>Edit Activity</h3>}</Heading>
             <Form>
-                <form id="edit_form" onSubmit={AddHandler}>
-                
-
+                <form id="edit_activity" onSubmit={AddHandler}>
                 <div className="inputs">
-                <label>Activity: </label>
-                <select id="activitiesselect"  value={activityId} onChange={(e)=> {setactivityId(event.target.value); console.log(activityId)}}>
-                    
-                    {allActivities.map((obj)=>
-                       <option key={obj.id} value={obj.id}>{obj.name}</option>
-                    )}
-                </select>
                 <label>Count: </label>
                 <input type='number' onChange={(e)=> setCount(e.target.value)}></input> 
                 <label>Duration: </label>
@@ -154,7 +152,7 @@ const content =  addShow && (
                         style={{ color: "white", fontSize: 30 }}
                     ></CloseRoundedIcon>{" "}
                     <button style={{ textDecoration: "none" }}
-                    onClick={() => setaddShow(false)}
+                    onClick={() => setEditShow(false)}
                     >
                         Cancel</button>
                     </FooterButton>
@@ -175,17 +173,14 @@ const content =  addShow && (
                         Submit
                     </Button>
                     </FooterButton>
-                    
                 </Footer>
                 </form>
             </Form>
             </section>
-                   
             </Content>
-            
     </Modal>
     )
     return content
 
 }
-export default AddRoutine;
+export default EditRoutineActivity;

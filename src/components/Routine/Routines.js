@@ -7,7 +7,7 @@ import AddRoutine from './AddActivity'
 const Routines = ({routine, userToken, setallroutines, setusersRoutines, allRoutines, usersRoutines, allActivities }) => {
     const[show, setShow] = useState(false)
     const[addShow, setaddShow] = useState(false)
-    const[updateroutine, setupdateroutine]= useState(routine)
+    const[updateroutine, setupdateroutine]= useState(routine.activities)
     return (
      <div>
          <div className="RoutineHeader">
@@ -73,10 +73,15 @@ const Routines = ({routine, userToken, setallroutines, setusersRoutines, allRout
         </div>
         
          <div>
-             {updateroutine.activities? updateroutine.activities.map((activity)=>
+             {updateroutine? updateroutine.map((activity)=>
              {return <Routineactivitysubcomp
-            allActivities={}
+             routine={routine}
+             userToken={userToken}
+            updateroutine={updateroutine}
+            setupdateroutine={setupdateroutine}
             activity={activity}
+            usersRoutines={usersRoutines}
+            setusersRoutines={setusersRoutines}
             key = {activity.routineId +'/'+activity.routineActivityId}
             />
             }

@@ -18,14 +18,14 @@ const Button = styled.button`
 `;
 
 
-const RoutineDelete= ({routineToDelete, usertoken, setallroutines, setusersRoutines, allRoutines, usersRoutines}) => {
+const RoutineDelete= ({routineToDelete, userToken, setallroutines, setusersRoutines, allRoutines, usersRoutines}) => {
 
     const deleteHandler = async (routineToDelete) =>{
         const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routines/${routineToDelete}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${usertoken}`
+                'Authorization': `Bearer ${userToken}`
             }
             })
         const data = await response.json();

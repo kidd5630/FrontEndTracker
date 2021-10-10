@@ -18,36 +18,29 @@ const Button = styled.button`
 `;
 
 
-const DeleteActivity= ({activityToDelete, usertoken, setallroutines, setusersRoutines, allRoutines, usersRoutines}) => {
+const DeleteActivity= ({activityToDelete, routine, usersRoutines, setusersRoutines, userToken, updateroutine, setupdateroutine }) => {
 
-    const deleteHandler = async (routineToDelete) =>{
+    const deleteHandler = async () =>{
         const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routine_activities/${activityToDelete}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${usertoken}`
+                'Authorization': `Bearer ${userToken}`
             }
             })
         const data = await response.json();
-        console.log(data)
         if(data){
-            const newallRoutines = allRoutines.filter((routine)=>
-            {return routine.id !==routineToDelete}
-            )
-            const newuserRoutines = usersRoutines.filter((routine)=>
-            {return routine.id !==routineToDelete}
-            ) 
-            setallroutines(newallRoutines)
-            setusersRoutines(newuserRoutines)
+            const newroutine = updateroutine.filter((routine)=>{
+                return routine.routineActivityId!==activityToDelete})
+            setupdateroutine(newroutine)
         }
     }
-
     return (
          <div>
     <Button
         type="button"
         className="btn btn-delete"
-        onClick={() => deleteHandler(routineToDelete)}
+        onClick={() => deleteHandler()}
       >
         <DeleteForeverRoundedIcon
           style={{ color: "white", fontSize: 30 }}
@@ -57,15 +50,4 @@ const DeleteActivity= ({activityToDelete, usertoken, setallroutines, setusersRou
     )
 }
 
-export default DeleteActvity;
-// const deleteHandler = async (postToDelete) => {
-//     const response = await fetch(
-//       `https://strangers-things.herokuapp.com/api/2105-VPI-RM-WEB-PT/posts/${postToDelete}`,
-//       {
-//         method: "DELETE",
-//         headers: {
-//           "Content-Type": "application/json",
-//           Authorization: `Bearer ${jwttoken}`,
-//         },
-//       }
-//     );
+export default DeleteActivity;
