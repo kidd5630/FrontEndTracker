@@ -28,7 +28,7 @@
     border: 2px solid black;
     display: flex;
     flex-direction: column;
-    margin-top: 2px;
+    margin: 2px 2px 2px 2px;
 }
 .RoutineButtons{
     grid-column: 3/4;
@@ -57,9 +57,23 @@
     text-overflow: ellipsis;
 }
 
+.activityButtons{
+    grid-template-columns: 1fr 1fr 1fr;
+    display: grid;
+    margin-left: 2px;
+}
+
 .activityUpdates{
     display: flex;
     flex-direction: row;
+}
+.activityposts{
+    border: black 1px solid;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 2px;
+    margin-top: 2px;
 }
 /* 
 #header {

@@ -90,7 +90,7 @@ const Routines = ({routine, userToken, setallroutines, setusersRoutines, allRout
 
         </div>
         
-         <div>
+         <div >
              {updateroutine? updateroutine.map((activity)=>
              {return <Routineactivitysubcomp
              routine={routine}

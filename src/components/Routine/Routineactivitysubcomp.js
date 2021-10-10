@@ -6,10 +6,11 @@ import EditRoutineActivity from './EditActivity';
 const Routineactivitysubcomp = ({activity,routine, userToken, updateroutine, setupdateroutine, setusersRoutines, usersRoutines}) => {
     const [EditShow, setEditShow] =useState(false)
     return (
-        <div>
+        <div className="activityButtons">
+            <div className="activityposts">
             Activity: {activity.name}- {activity.description}  
             <div>Duration:{activity.duration} Count:{activity.count}</div>
-            
+            </div>
             {userToken? <div className="activityUpdates"><DeleteActivity 
             routine={routine}
             userToken={userToken}
