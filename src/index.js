@@ -35,6 +35,9 @@ const App = () => {
     // const [postDeleted, setPostDeleted] = useState(0);
     // const [myPostsList, setMyPostsList] = useState([]);
     const [selectedAct, setSelectedAct] = useState(getActId());
+	const [featuredName, setFeaturedName] = useState([]);
+    const [featuredCreator, setFeaturedCreator] = useState([]);
+    // const [isError, setIsError] = useState(false)
 	
 
 
@@ -108,7 +111,14 @@ const App = () => {
 								setAllActivities={setAllActivities}
 								selectedAct={selectedAct}
 								setSelectedAct={setSelectedAct}
-								activityID={activityID}/>
+								activityID={activityID}
+								featuredName={featuredName} 
+								setFeaturedName={setFeaturedName}
+								featuredCreator={featuredCreator}
+								setFeaturedCreator={setFeaturedCreator}
+								// isError={isError}
+								// setIsError={setIsError}
+								/>
 						</Route>
 						<Route path="/activities/:id">
                             <IndividualActivity 
@@ -117,7 +127,12 @@ const App = () => {
                                 setAllActivities={setAllActivities}
                                 userToken={userToken}
                                 selectedAct={selectedAct}
-                                // deleteItem={deleteItem}
+								featuredName={featuredName} 
+								setFeaturedName={setFeaturedName}
+								featuredCreator={featuredCreator}
+								setFeaturedCreator={setFeaturedCreator}
+								// isError={isError}
+								// setIsError={setIsError}
                             /> 
                         </Route>
 						<Route path="/myroutines/new">
@@ -149,7 +164,14 @@ const App = () => {
 								setAllActivities={setAllActivities}
 								selectedAct={selectedAct}
 								setSelectedAct={setSelectedAct}
-								activityID={activityID}/>
+								activityID={activityID}
+								featuredName={featuredName} 
+								setFeaturedName={setFeaturedName}
+								featuredCreator={featuredCreator}
+								setFeaturedCreator={setFeaturedCreator}
+								// isError={isError}
+								// setIsError={setIsError}
+								/>
 						</Route>
 						<Route path="/activities/:id">
                             <IndividualActivity
@@ -158,7 +180,12 @@ const App = () => {
                                 setAllActivities={setAllActivities}
                                 userToken={userToken}
                                 selectedAct={selectedAct}
-                                // deleteItem={deleteItem}
+								featuredName={featuredName} 
+								setFeaturedName={setFeaturedName}
+								featuredCreator={featuredCreator}
+								setFeaturedCreator={setFeaturedCreator}
+								// isError={isError}
+								// setIsError={setIsError}
                             /> 
                         </Route>
 						<Route path="/register">

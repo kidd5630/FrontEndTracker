@@ -14,7 +14,8 @@ const Activities = ({userToken, allActivities, setAllActivities, setSelectedAct,
                 <h3 className="activityTitle"
                   onClick={() => {
                     activityID(act.id)
-                    setSelectedAct(act.id)}}>
+                    setSelectedAct(act.id)
+                    }}>
                   <Link to={`/activities/${act.id}`} className="activityLink">
                     {act.name}
                   </Link>
@@ -42,6 +43,3 @@ const Activities = ({userToken, allActivities, setAllActivities, setSelectedAct,
   
     
 export default Activities;
-
-
-    
