@@ -16,6 +16,7 @@ const Modal = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  
   backdrop-filter: blur(6px);
 `;
 
@@ -24,9 +25,10 @@ const Content = styled.div`
   width: 480px;
   padding: 12px;
   min-height: 200px;
+  border: black solid 2px;
   background: #ADD8E6;
   box-shadow: 0 2px 12px -8px black;
-  border-radius: 5%;
+  border-radius: 2%;
 `;
 
 const Heading = styled.div`
