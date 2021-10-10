@@ -38,7 +38,9 @@ const DeleteActivity= ({activityToDelete, routine, usersRoutines, setusersRoutin
     return (
          <div>
     <Button
+
         type="button"
+        title="Delete Activity"
         className="btn btn-delete"
         onClick={() => deleteHandler()}
       >

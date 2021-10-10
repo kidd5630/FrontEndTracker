@@ -22,21 +22,27 @@
 .RoutineHeader{
     display: grid;
     font-size: larger;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-column: 1/3;
+    grid-template-columns: 1fr 1fr 1fr 15%;
 }
 .RoutineDescription{
     border: 2px solid black;
     display: flex;
+    grid-column: 1/4;
     flex-direction: column;
-    margin: 2px 2px 2px 2px;
+
+    margin-left: 2px;
 }
 .RoutineButtons{
-    grid-column: 3/4;
+    grid-column: 4/5;
     display: flex;
     flex-direction: row;
+    margin-left: auto;
+    padding-right: 1px;
 }
 .innerbox{
     display: flex;
+    flex-direction: column;
     
 }
 .innerboxText{
@@ -58,23 +64,53 @@
 }
 
 .activityButtons{
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 15%;
     display: grid;
     margin-left: 2px;
+    padding-top: 1px;
 }
 
 .activityUpdates{
     display: flex;
     flex-direction: row;
+    margin-left: auto;
 }
 .activityposts{
+    display: flex;
+    grid-column: 1/4;
     border: black 1px solid;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
-    margin-right: 2px;
+    padding-right: 1px;
+    padding-top: 1px;
     margin-top: 2px;
 }
+.activitytext{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 1px;
+}
+
+.routineContainer{
+    display: grid;
+    grid-template-columns: 15% 1fr 15% ;
+}
+
+.routinebody{
+    border: solid black 2px;
+    margin:5px 5px 5px 5px;
+    grid-column: 2/3;
+    background-color: #7ecce6;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color:black
+}
+
+.loggedinMessage{
+    font-family: "Akaya Telivigala";
+}
+
+
 /* 
 #header {
     width: 100%;

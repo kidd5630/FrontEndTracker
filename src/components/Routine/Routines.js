@@ -30,12 +30,13 @@ const Routines = ({routine, userToken, setallroutines, setusersRoutines, allRout
     const[addShow, setaddShow] = useState(false)
     const[updateroutine, setupdateroutine]= useState(routine.activities)
     return (
-     <div>
+     <div className="routineContainer">
+         <div className="routinebody">
          <div className="RoutineHeader">
              <div className='RoutineDescription'>
                 <div className='innerbox'>
                      
-                <div className='innerboxText'> Routine: {routine.name}  </div>
+                <div className='innerboxText' style={{fontWeight:"bolder"}}> Routine: {routine.name}  </div>
                 <div className='innerboxText'> Goal: {routine.goal} </div>
                 
                 </div>
@@ -51,6 +52,7 @@ const Routines = ({routine, userToken, setallroutines, setusersRoutines, allRout
                 usersRoutines={usersRoutines}
                 />
                  <Button
+                title="Add Activity"
                 type="button"
                 onClick={() => setaddShow(true)}>
                 <AddBoxIcon style={{ color: "white", fontSize: 30 }}></AddBoxIcon>
@@ -70,6 +72,7 @@ const Routines = ({routine, userToken, setallroutines, setusersRoutines, allRout
                 updateroutine={updateroutine}
                 ></AddRoutine>
                 <Button
+                title="Edit Routine"
                 type="button"
                 onClick={() => setShow(true)}>
                 <EditIcon style={{ color: "white", fontSize: 30 }}></EditIcon>
@@ -105,7 +108,7 @@ const Routines = ({routine, userToken, setallroutines, setusersRoutines, allRout
             }
              ):null}
          </div>
-         
+     </div>
      </div>
        
     )

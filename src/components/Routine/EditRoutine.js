@@ -110,7 +110,6 @@ const EditRoutine= ({show, setShow, routine, routineToDelete, userToken, setallr
     const [createSuccess, setcreateSucess] = useState(false)
     const handleOnCheck = () => {
                 setisPublic(!isPublic)
-                console.log(isPublic)
             };
     
     const editHandler = async (e) =>{

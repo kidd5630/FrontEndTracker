@@ -25,7 +25,6 @@ const IndividualActivity = ({userToken, allActivities, setAllActivities, selecte
             // clear()
             const results = await fetchRoutinesFeature(BASE_URL, selectedAct);
             const {error} = results;
-            console.log("results", results)
             if(Array.isArray(results)){
                 results.map((routine) => {
                     if(routine.isPublic){

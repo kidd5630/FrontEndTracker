@@ -117,7 +117,6 @@ const AddRoutine = ({addShow, setaddShow, routine, setupdateroutine, updaterouti
             newobj.count = parseInt(count);
             newobj.duration = parseInt(duration)
             const objInd = usersRoutines.findIndex((x)=> x.id==routineToDelete)
-            console.log('hereeee',usersRoutines[objInd])
             usersRoutines[objInd].activities.push(newobj)
             setaddShow(false)
         }
@@ -137,16 +136,16 @@ const content =  addShow && (
 
                 <div className="inputs">
                 <label>Activity: </label>
-                <select id="activitiesselect"  value={activityId} onChange={(e)=> {setactivityId(event.target.value); console.log(activityId)}}>
+                <select id="activitiesselect"  value={activityId} onChange={(e)=> {setactivityId(event.target.value)}}>
                     
                     {allActivities.map((obj)=>
                        <option key={obj.id} value={obj.id}>{obj.name}</option>
                     )}
                 </select>
                 <label>Count: </label>
-                <input type='number' onChange={(e)=> setCount(e.target.value)}></input> 
+                <input type='number' min="0" onChange={(e)=> setCount(e.target.value)}></input> 
                 <label>Duration: </label>
-                <input type='number'onChange={(e)=> setDuration(e.target.value)}></input> 
+                <input type='number' min="0" onChange={(e)=> setDuration(e.target.value)}></input> 
                 </div>      
                 <Footer>
                     <FooterButton>

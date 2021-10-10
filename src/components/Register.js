@@ -29,7 +29,6 @@ const Register = ({setUserToken, setMyPassword, myPassword, setMyUsername, myUse
                     localStorage.setItem('myUsername', JSON.stringify(myUsername));
                     history.push("/");
                 } else {
-                    console.log("woops");
                 }
             }catch(error) {
                 console.error(error);

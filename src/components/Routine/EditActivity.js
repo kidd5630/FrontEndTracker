@@ -109,23 +109,14 @@ const EditRoutineActivity = ({EditShow, setEditShow, routine, setupdateroutine, 
                         })
             })
             const data = await response.json();
-            console.log(data)
-            console.log(updateroutine,">>>>>>>>>>>>>>>")
+
             if(data){
                 const newobj = updateroutine.find((x)=> x.routineActivityId==activitytoEdit)
-                console.log(newobj,"KLKK")
                 count? newobj.count = parseInt(count):null
                 duration? newobj.duration = parseInt(duration): null
-                console.log(newobj,">>>>>????")
                 const index = updateroutine.findIndex((x)=> x.routineActivityId==activitytoEdit)
                 const map = updateroutine.map(obj => obj.routineActivityId==activitytoEdit? newobj: obj)
-                console.log(map,"IT WORK?????")
                 setupdateroutine(map)
-                // newobj.count = parseInt(count);
-                // newobj.duration = parseInt(duration)
-                // const objInd = usersRoutines.findIndex((x)=> x.id==routineToDelete)
-                // usersRoutines[objInd].activities.push(newobj)
-
                 setEditShow(false)
             }
         }catch(error){
@@ -142,9 +133,9 @@ const content =  EditShow && (
                 <form id="edit_activity" onSubmit={AddHandler}>
                 <div className="inputs">
                 <label>Count: </label>
-                <input type='number' onChange={(e)=> setCount(e.target.value)}></input> 
+                <input type='number' min="0" onChange={(e)=> setCount(e.target.value)}></input> 
                 <label>Duration: </label>
-                <input type='number'onChange={(e)=> setDuration(e.target.value)}></input> 
+                <input type='number' min="0" onChange={(e)=> setDuration(e.target.value)}></input> 
                 </div>      
                 <Footer>
                     <FooterButton>

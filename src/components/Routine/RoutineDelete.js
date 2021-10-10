@@ -29,7 +29,6 @@ const RoutineDelete= ({routineToDelete, userToken, setallroutines, setusersRouti
             }
             })
         const data = await response.json();
-        console.log(data)
         if(data){
             const newallRoutines = allRoutines.filter((routine)=>
             {return routine.id !==routineToDelete}
@@ -45,6 +44,7 @@ const RoutineDelete= ({routineToDelete, userToken, setallroutines, setusersRouti
     return (
          <div>
     <Button
+        title="Delete Routine"
         type="button"
         className="btn btn-delete"
         onClick={() => deleteHandler(routineToDelete)}
