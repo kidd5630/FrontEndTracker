@@ -9,7 +9,8 @@ const Routineactivitysubcomp = ({activity,routine, userToken, updateroutine, set
         <div>
             Activity: {activity.name}- {activity.description}  
             <div>Duration:{activity.duration} Count:{activity.count}</div>
-            <DeleteActivity 
+            
+            {userToken? <div className="activityUpdates"><DeleteActivity 
             routine={routine}
             userToken={userToken}
             activityToDelete={activity.routineActivityId}
@@ -30,6 +31,12 @@ const Routineactivitysubcomp = ({activity,routine, userToken, updateroutine, set
             updateroutine={updateroutine}
             setupdateroutine={setupdateroutine}
             />
+            </div>
+            
+            :null }
+            
+            
+            
         </div>
         
     )

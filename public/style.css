@@ -30,8 +30,10 @@
     flex-direction: column;
     margin-top: 2px;
 }
-.deleteButton{
+.RoutineButtons{
     grid-column: 3/4;
+    display: flex;
+    flex-direction: row;
 }
 .innerbox{
     display: flex;
@@ -53,6 +55,11 @@
 #activitiesselect{
     width: 200px;
     text-overflow: ellipsis;
+}
+
+.activityUpdates{
+    display: flex;
+    flex-direction: row;
 }
 /* 
 #header {

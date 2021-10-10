@@ -4,6 +4,27 @@ import EditIcon from '@mui/icons-material/Edit';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import EditRoutine from './EditRoutine';
 import AddRoutine from './AddActivity'
+import styled from "styled-components";
+
+
+const Button = styled.button`
+  display: flex;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px -2px black;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  width: 36px;
+  color: white;
+
+  a:visited {
+    color: white;
+  }
+`;
+
+
+
 const Routines = ({routine, userToken, setallroutines, setusersRoutines, allRoutines, usersRoutines, allActivities }) => {
     const[show, setShow] = useState(false)
     const[addShow, setaddShow] = useState(false)
@@ -21,21 +42,19 @@ const Routines = ({routine, userToken, setallroutines, setusersRoutines, allRout
                 <div className='innerboxText'> By: {routine.creatorName}</div>
                 
             </div>
-         {userToken? <div className="deleteButton"> <RoutineDelete 
+         {userToken? <div className="RoutineButtons"> <RoutineDelete 
                 routineToDelete ={routine.id}
                 userToken={userToken}
                 setallroutines={setallroutines}
                 setusersRoutines={setusersRoutines}
                 allRoutines={allRoutines}
                 usersRoutines={usersRoutines}
-                /></div>: null}
-             {userToken ? 
-            <div className="deleteButton">
-                <button
+                />
+                 <Button
                 type="button"
                 onClick={() => setaddShow(true)}>
-                <AddBoxIcon style={{ color: "black", fontSize: 30 }}></AddBoxIcon>
-                </button>
+                <AddBoxIcon style={{ color: "white", fontSize: 30 }}></AddBoxIcon>
+                </Button>
                 <AddRoutine
                 routine={routine}
                 routineToDelete ={routine.id}
@@ -50,14 +69,11 @@ const Routines = ({routine, userToken, setallroutines, setusersRoutines, allRout
                 setupdateroutine={setupdateroutine}
                 updateroutine={updateroutine}
                 ></AddRoutine>
-            </div>:null}
-            {userToken ? 
-            <div className="deleteButton">
-                <button
+                <Button
                 type="button"
                 onClick={() => setShow(true)}>
-                <EditIcon style={{ color: "black", fontSize: 30 }}></EditIcon>
-                </button>
+                <EditIcon style={{ color: "white", fontSize: 30 }}></EditIcon>
+                </Button>
                 <EditRoutine 
                 routineToDelete ={routine.id}
                 show={show}
@@ -68,7 +84,9 @@ const Routines = ({routine, userToken, setallroutines, setusersRoutines, allRout
                 allRoutines={allRoutines}
                 usersRoutines={usersRoutines}
                 ></EditRoutine>
-            </div>:null}
+
+                </div>: null}
+
 
         </div>
         
