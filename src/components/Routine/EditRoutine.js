@@ -115,7 +115,7 @@ const EditRoutine= ({show, setShow, routine, routineToDelete, userToken, setallr
     const editHandler = async (e) =>{
         e.preventDefault()
         try{
-            const url = `http://fitnesstrac-kr.herokuapp.com/api/routines/${routineToDelete}`
+            const url = `https://fitnesstrac-kr.herokuapp.com/api/routines/${routineToDelete}`
             setcreateSucess(false)
             const response = await fetch(url,{
                     method: "PATCH",

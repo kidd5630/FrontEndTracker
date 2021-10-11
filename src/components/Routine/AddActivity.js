@@ -97,7 +97,7 @@ const AddRoutine = ({addShow, setaddShow, routine, setupdateroutine, updaterouti
     const AddHandler = async (e)=>{
     e.preventDefault()
     try{
-        const url = `http://fitnesstrac-kr.herokuapp.com/api/routines/${routineToDelete}/activities`
+        const url = `https://fitnesstrac-kr.herokuapp.com/api/routines/${routineToDelete}/activities`
         setcreateSucess(false)
         const response = await fetch(url,{
                 method: "POST",

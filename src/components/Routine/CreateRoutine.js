@@ -115,7 +115,7 @@ const CreateRoutine = ({userToken, myUsername, setallroutines, setusersRoutines,
             try {
 
             setcreateSucess(false)
-           const response = await fetch('http://fitnesstrac-kr.herokuapp.com/api/routines',{
+           const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/routines',{
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json',
@@ -166,7 +166,7 @@ const CreateRoutine = ({userToken, myUsername, setallroutines, setusersRoutines,
                 <Label>Goal*</Label>
                 <Input
                   type="text"
-                  placeholder="Public"
+                  placeholder="Goal"
                   required="required"
                   value={goal}
                   onChange={(e) => setgoal(e.target.value)}
