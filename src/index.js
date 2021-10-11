@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 import {
 	Header,
-	Footer,
 	Routines,
 	Routineslist,
 	Register,
@@ -18,7 +17,6 @@ import {
     getCurrentUsername
 } from './auth';
 import { fetchAllActivities,
-		BASE_URL,
 		fetchAllRoutines,
 		fetchUsersRoutines
  } from './api';
@@ -32,12 +30,10 @@ const App = () => {
     const [myPassword, setMyPassword] = useState('');
 	const [allroutines, setallroutines] = useState([])
 	const [usersRoutines, setusersRoutines] =useState([])
-    // const [postDeleted, setPostDeleted] = useState(0);
-    // const [myPostsList, setMyPostsList] = useState([]);
     const [selectedAct, setSelectedAct] = useState(getActId());
 	const [featuredName, setFeaturedName] = useState([]);
     const [featuredCreator, setFeaturedCreator] = useState([]);
-    // const [isError, setIsError] = useState(false)
+
 	
 
 
@@ -82,6 +78,11 @@ const App = () => {
 				?
 				(<div>
 					<Switch>	
+						<Route exact path ="/">
+							<Home 
+								userToken={userToken}
+								myUsername={myUsername} />
+						</Route>
 						<Route exact path ="/home">
 							<Home 
 								userToken={userToken}
@@ -116,8 +117,6 @@ const App = () => {
 								setFeaturedName={setFeaturedName}
 								featuredCreator={featuredCreator}
 								setFeaturedCreator={setFeaturedCreator}
-								// isError={isError}
-								// setIsError={setIsError}
 								/>
 						</Route>
 						<Route path="/activities/:id">
@@ -131,8 +130,6 @@ const App = () => {
 								setFeaturedName={setFeaturedName}
 								featuredCreator={featuredCreator}
 								setFeaturedCreator={setFeaturedCreator}
-								// isError={isError}
-								// setIsError={setIsError}
                             /> 
                         </Route>
 						<Route path="/myroutines/new">
@@ -150,6 +147,16 @@ const App = () => {
 				: 
 				(<div>
 					<Switch>
+						<Route exact path ="/">
+							<Home 
+								userToken={userToken}
+								myUsername={myUsername} />
+						</Route>
+					<Route exact path ="/home">
+							<Home 
+								userToken={userToken}
+								myUsername={myUsername} />
+						</Route>
 					<Route path ="/routines">
 							<Routineslist
 								userToken={userToken}
@@ -169,8 +176,6 @@ const App = () => {
 								setFeaturedName={setFeaturedName}
 								featuredCreator={featuredCreator}
 								setFeaturedCreator={setFeaturedCreator}
-								// isError={isError}
-								// setIsError={setIsError}
 								/>
 						</Route>
 						<Route path="/activities/:id">
@@ -184,8 +189,6 @@ const App = () => {
 								setFeaturedName={setFeaturedName}
 								featuredCreator={featuredCreator}
 								setFeaturedCreator={setFeaturedCreator}
-								// isError={isError}
-								// setIsError={setIsError}
                             /> 
                         </Route>
 						<Route path="/register">
@@ -209,11 +212,8 @@ const App = () => {
 						<Route path="/myroutines/new">
                             <CreateRoutine userToken={userToken}/>
                         </Route>
-						<Route exact path="/">
-							<Home />
-						</Route>
+						
 					</Switch>
-				<Footer />
 				</div>)
 				}
 				

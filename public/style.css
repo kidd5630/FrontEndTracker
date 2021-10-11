@@ -1,23 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap');
 * { 
 	margin:0;
 	padding:0;
 	box-sizing: border-box;
 } 
 
-.activity{
+
+#header {
+    background-color: rgb(3, 58, 141);
+    display: flex;
+    justify-content: flex-end;
+
+}
+.navBtn {
+    color: white;
+    display: inline-flex;
+    padding-right: 20px;
+    font-family: "Akaya Telivigala";
+    font-size: medium;
+}
+
+.home{
+    background-color: #033a8d;
+    position: fixed;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    color:white;
+    justify-content: center;
+    align-items: center;
+    font-family: "Akaya Telivigala";
+    font-size: xx-large;
+}
+
+/* .activity{
 	margin-top: 15px;
 	border-top: solid gray 5px;
     width: 100vw;
     overflow: scroll;
     height: 80vh;
-}
+} */
 
-.editFeild-inactive{
+/* .editFeild-inactive{
     display: none;
 }
 .editFeild-active{
     display: active;
-}
+} */
 
 .RoutineHeader{
     display: grid;
@@ -109,25 +138,3 @@
 .loggedinMessage{
     font-family: "Akaya Telivigala";
 }
-
-
-/* 
-#header {
-    width: 100%;
-    background-color: rgb(107, 231, 231);
-    text-decoration: none;   
-    display:inline-flex;
-    flex-direction: row;
-    height: 19vh;
-    justify-content: space-between;
-    padding: 4px;
-    align-items: center;
-    box-shadow: 1px 1px 15px rgb(150, 223, 252);
-    position: fixed;
-    z-index: 1;
-} */
-/* .header{
-    color: rgb(2, 3, 3);
-    text-decoration: underline;
-    font-family: Indie Flower;
-} */

@@ -12,17 +12,14 @@ const IndividualActivity = ({userToken, allActivities, setAllActivities, selecte
     const ToggleClass = () => {
         setActiveEdit(!isActiveEdit);
       };
-
-    //   const clear = () => {
-    //     setFeaturedName([]);
-    //     setFeaturedCreator([]);
-    //     setIsError(false)
-    //   };
+    
+    
+    let template;
 
 
     useEffect(async () => {
         try{
-            // clear()
+            
             const results = await fetchRoutinesFeature(BASE_URL, selectedAct);
             const {error} = results;
             if(Array.isArray(results)){
@@ -32,6 +29,10 @@ const IndividualActivity = ({userToken, allActivities, setAllActivities, selecte
                         const creator = routine.creatorName;
                         setFeaturedName([...featuredName, name]);
                         setFeaturedCreator([...featuredCreator, creator]);
+                        template = `<ul>
+                            <li>Name:${featuredName}</li>
+                            <li>Created By:${featuredCreator}</li>
+                        </ul>`
                     }
                 })
             }else{
@@ -62,10 +63,7 @@ const IndividualActivity = ({userToken, allActivities, setAllActivities, selecte
                             :
                             (<div className="featuredList">
                                 <h3>Routine(s) That Feature(s) This Activity:</h3>
-                                <ul>
-                                    <li>Name:{featuredName}</li>
-                                    <li>Created By:{featuredCreator}</li>
-                                </ul>
+                                {template}
                             </div>)
                             }
                             
