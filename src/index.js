@@ -145,7 +145,7 @@ const App = () => {
 					</Switch>
 				</div>)	
 				: 
-				(<div>
+				(<div >
 					<Switch>
 						<Route exact path ="/">
 							<Home 
@@ -221,7 +221,7 @@ const App = () => {
 				</div>)
 				}
 				
-				
+				<div className="backdrop"></div>	
 				
 			
 			</div>

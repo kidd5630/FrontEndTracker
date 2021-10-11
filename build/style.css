@@ -5,7 +5,9 @@
 	box-sizing: border-box;
 } 
 
-
+.app{
+    background-color: chocolate;
+}
 #header {
     background-color: rgb(3, 58, 141);
     display: flex;
