@@ -161,6 +161,7 @@ const App = () => {
 							<Routineslist
 								userToken={userToken}
 								myUsername={myUsername}
+								pageRoutines={allroutines}
 								allroutines={allroutines} />
 						</Route>
 						<Route exact path ="/activities">
