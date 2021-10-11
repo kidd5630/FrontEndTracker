@@ -95,7 +95,7 @@ const EditRoutineActivity = ({EditShow, setEditShow, routine, setupdateroutine, 
     const AddHandler = async (e)=>{
         e.preventDefault()
         try{
-            const url = `http://fitnesstrac-kr.herokuapp.com/api/routine_activities/${activitytoEdit}`
+            const url = `https://fitnesstrac-kr.herokuapp.com/api/routine_activities/${activitytoEdit}`
             setcreateSucess(false)
             const response = await fetch(url,{
                     method: "PATCH",

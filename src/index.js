@@ -161,6 +161,8 @@ const App = () => {
 							<Routineslist
 								userToken={userToken}
 								myUsername={myUsername}
+								allroutines={allroutines}
+								pageRoutines={allroutines} 
 								pageRoutines={allroutines}
 								allroutines={allroutines} />
 						</Route>
