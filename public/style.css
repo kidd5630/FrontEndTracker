@@ -172,9 +172,8 @@
   pointer-events: none;
 }
 .backdrop{
-    background: #7ecce6;
-    width: 100vw;
-    Height: 100vh;
+    height: 100vh;
+    background-color: rgb(3, 58, 141)
 }
 /* 
 #header {
