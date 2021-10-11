@@ -18,7 +18,6 @@ const Top = styled.header`
   color: #fafafa;
 `;
 
-
 const Header = ({userToken, setUserToken, setMyUsername}) => {
 let history = useHistory()	
     return(

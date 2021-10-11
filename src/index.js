@@ -67,7 +67,8 @@ const App = () => {
 
 	return (
 		<Router>
-			<div className="app">
+			<div className="app"
+			style={{backgroundColor:"rgb(3, 58, 141)"}}>
 				
 			<Header 
 				userToken={userToken}
@@ -220,9 +221,6 @@ const App = () => {
 				</div>)
 				}
 				
-				
-				
-			
 			</div>
 	</Router>
 	)
