@@ -84,12 +84,13 @@ const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setall
     const getPaginatedData = () => {
         const startIndex = currentPage * dataLimit - dataLimit;
         const endIndex = startIndex + dataLimit;
+        console.log(pageRoutines)
         if(currentPage>pages){
-          return pageRoutines? pageRoutines.slice(0,10):null;
+          return pageRoutines.slice(0,10);
         }
         else{
           
-        return pageRoutines? pageRoutines.slice(startIndex, endIndex):null;
+        return pageRoutines.slice(startIndex, endIndex);
         }
       };
     const getPaginationGroup = () => {
