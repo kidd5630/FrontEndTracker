@@ -21,7 +21,7 @@ const Button = styled.button`
 const DeleteActivity= ({activityToDelete, routine, usersRoutines, setusersRoutines, userToken, updateroutine, setupdateroutine }) => {
 
     const deleteHandler = async () =>{
-        const response = await fetch(`http://fitnesstrac-kr.herokuapp.com/api/routine_activities/${activityToDelete}`, {
+        const response = await fetch(`https://fitnesstrac-kr.herokuapp.com/api/routine_activities/${activityToDelete}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
