@@ -2,6 +2,8 @@ import React, { useState, useEffect} from 'react';
 import Routines  from './Routines';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { fontSize } from '@mui/system';
 
 const Header = styled.header`
   font-family: "Akaya Telivigala", cursive;
@@ -19,6 +21,28 @@ const Container = styled.header`
   color: #fafafa;
 `;
 
+const Button = styled.button`
+  display: flex;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px -2px black;
+  border: black solid 1px;
+  background-color: #4853f3;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  color: black;
+  font-size: 25;
+  font-Weight: bold;
+  padding: 2px;
+  margin: 0;
+  position: fixed;
+  cursor: pointer;
+  a:visited {
+    color: white;
+  }
+`;
+
+
 
 
 const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setallroutines, setusersRoutines, pageRoutines, usersRoutines}) => {
@@ -26,10 +50,13 @@ const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setall
     const pageLimit = 5;
     const [pages, setPages] = useState(Math.round(pageRoutines.length/10))
     const [currentPage, setCurrentPage] =useState(1)
+    const defaultarr = []
+
+
 
      useEffect(() => {
         window.scrollTo({ behavior: 'smooth', top: '0px' });
-        setPages(Math.round(pageRoutines.length/10))
+        setPages(Math.ceil(pageRoutines.length/10))
       }, [currentPage, pageRoutines]);
       
       
@@ -52,13 +79,18 @@ const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setall
     const getPaginatedData = () => {
         const startIndex = currentPage * dataLimit - dataLimit;
         const endIndex = startIndex + dataLimit;
-
+        if(currentPage>pages){
+          setCurrentPage(1)
+          return pageRoutines.slice(0,10)
+        }
+        else{
         return pageRoutines.slice(startIndex, endIndex);
-
+        }
       };
     const getPaginationGroup = () => {
       let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
-      return new Array(pageLimit).fill().map((_, idx) => start + idx + 1);
+      const array = new Array(pageLimit).fill().map((_, idx) => start + idx + 1);
+      return array
     };
 
 
@@ -74,17 +106,26 @@ const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setall
               <h1>All Routines</h1>
             </div>
         }
+        <h3>Page{currentPage}</h3>
         </Header>
-        {userToken? <Link to={`/myroutines/new`} className="activityLink">
-           <div>Create routine</div>
-                  </Link>: null}
+        {userToken?
+        <Link to={`/myroutines/new`} className="activityLink" title="Create New Routine"
+        style={{
+        cursor:"pointer", 
+        marginLeft:"auto",
+        top:"20%",
+        left:"4%",
+        position:'fixed'}} >
+         <Button>
+        <AddCircleOutlineIcon style ={{color:'black', fontSize:70}}>
+        </AddCircleOutlineIcon></Button></Link>: null}
           <div>
-            {getPaginatedData().map((routine, idx)=>
+            {getPaginatedData().map((routine)=>
             {return (<Routines
             pageRoutines={pageRoutines}
             routine ={routine} 
             userToken ={userToken}
-            key ={idx}
+            key ={routine.id}
             allRoutines={allRoutines}
             usersRoutines={usersRoutines}
             setallroutines={setallroutines}

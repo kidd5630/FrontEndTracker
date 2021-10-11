@@ -152,10 +152,10 @@ const content =  addShow && (
                     <CloseRoundedIcon
                         style={{ color: "white", fontSize: 30 }}
                     ></CloseRoundedIcon>{" "}
-                    <button style={{ textDecoration: "none" }}
+                    <Button style={{ textDecoration: "none", color: "white" }}
                     onClick={() => setaddShow(false)}
                     >
-                        Cancel</button>
+                        Cancel</Button>
                     </FooterButton>
                     <FooterButton>
                     <CheckRoundedIcon
