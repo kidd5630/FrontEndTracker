@@ -162,7 +162,7 @@ const App = () => {
 								userToken={userToken}
 								myUsername={myUsername}
 								allroutines={allroutines}
-								pageRoutines={allroutines} />
+								pageRoutines={allroutines} 
 								pageRoutines={allroutines}
 								allroutines={allroutines} />
 						</Route>
