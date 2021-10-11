@@ -4,10 +4,11 @@ import { useHistory } from "react-router-dom";
 
 import {
     BASE_URL,
-    fetchLoginUser
+    fetchLoginUser,
+    fetchUsersRoutines
 } from '../api';
 
-const Login = ({setMyPassword, myPassword, setMyUsername, myUsername, setUserToken}) => {
+const Login = ({setMyPassword, myPassword, setusersRoutines, setMyUsername, myUsername, setUserToken}) => {
 
     let history = useHistory();
     
@@ -21,6 +22,8 @@ const Login = ({setMyPassword, myPassword, setMyUsername, myUsername, setUserTok
                 setMyUsername(myUsername);
                 localStorage.setItem('userToken', token);
                 localStorage.setItem('myUsername', JSON.stringify(myUsername));
+                const routines = await fetchUsersRoutines(myUsername, token)
+                setusersRoutines(routines)
                 history.push("/");
             } else {
                 alert("Your Username Or Password Is Incorrect");

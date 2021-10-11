@@ -48,11 +48,7 @@ const App = () => {
 			setallroutines(routines)
 		})
 		.catch((error)=>{console.error(error)})
-		fetchUsersRoutines(myUsername, userToken)
-		.then((routine)=> {
-			setusersRoutines(routine)
-		})
-		.catch((error)=>{console.error(error)})
+
     }, []);
 	
 	function activityID(act_ID) {
@@ -205,6 +201,7 @@ const App = () => {
 							</Route>
 						<Route path="/login">
 							<Login 
+								setusersRoutines={setusersRoutines}
 								myUsername={myUsername}
 								setMyUsername={setMyUsername}
 								myPassword={myPassword}
