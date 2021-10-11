@@ -50,7 +50,6 @@ const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setall
     const pageLimit = 5;
     const [pages, setPages] = useState(Math.round(pageRoutines.length/10))
     const [currentPage, setCurrentPage] =useState(1)
-    const defaultarr = []
 
 
 
@@ -64,11 +63,17 @@ const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setall
       if(currentPage<pages){
       setCurrentPage((page) => page + 1);
       }
+      else{
+        setCurrentPage(2)
+      }
     }
     function goToPreviousPage() {
       if(currentPage>1){
-      setCurrentPage((page) => page - 1);
-    }
+      setCurrentPage((page) => page - 1);}
+      else{
+        setCurrentPage(1)
+      }
+    
    }
    function changePage(event) {
       const pageNumber = Number(event.target.textContent);
@@ -80,7 +85,6 @@ const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setall
         const startIndex = currentPage * dataLimit - dataLimit;
         const endIndex = startIndex + dataLimit;
         if(currentPage>pages){
-          setCurrentPage(1)
           return pageRoutines.slice(0,10)
         }
         else{
@@ -88,7 +92,10 @@ const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setall
         }
       };
     const getPaginationGroup = () => {
-      let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
+      let start = currentPage-3>0? currentPage-3:0
+      if(currentPage>pages){
+        start=0
+      }
       const array = new Array(pageLimit).fill().map((_, idx) => start + idx + 1);
       return array
     };
@@ -106,7 +113,7 @@ const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setall
               <h1>All Routines</h1>
             </div>
         }
-        <h3>Page{currentPage}</h3>
+        
         </Header>
         {userToken?
         <Link to={`/myroutines/new`} className="activityLink" title="Create New Routine"
