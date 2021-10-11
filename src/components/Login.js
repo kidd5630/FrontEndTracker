@@ -11,7 +11,6 @@ import {
     fetchUsersRoutines
 } from '../api';
 
-<<<<<<< HEAD
 const Modal = styled.div`
   position: absolute;
   top: 0;
@@ -87,10 +86,8 @@ const FooterButton = styled.div`
 `;
 
 
-const Login = ({setMyPassword, myPassword, setMyUsername, myUsername, setUserToken}) => {
-=======
+
 const Login = ({setMyPassword, myPassword, setusersRoutines, setMyUsername, myUsername, setUserToken}) => {
->>>>>>> 0351dbe4e02cbfd575c1a36f77b40750088fe403
 
     let history = useHistory();
     

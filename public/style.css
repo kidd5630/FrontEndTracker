@@ -33,13 +33,6 @@
     font-size: xx-large;
 }
 
-/* .activity{
-	margin-top: 15px;
-	border-top: solid gray 5px;
-    width: 100vw;
-    overflow: scroll;
-    height: 80vh;
-} */
 
 /* .editFeild-inactive{
     display: none;
@@ -47,6 +40,67 @@
 .editFeild-active{
     display: active;
 } */
+
+
+.activity {
+    background-color: #587cf5;
+}
+.activityContainer {
+    display: grid;
+    grid-template-columns: 15% 1fr 15% ;
+}
+
+.activityBody {
+    border: solid black 2px;
+    margin:5px 5px 5px 5px;
+    grid-column: 2/3;
+    background-color: #7ecce6;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color:black
+}
+.activityHeader {
+    display: grid;
+    font-size: larger;
+    grid-column: 1/3;
+    grid-template-columns: 1fr 1fr 1fr 15%;
+}
+.activityDescription{
+    border: 2px solid black;
+    display: flex;
+    grid-column: 1/4;
+    flex-direction: column;
+
+    margin-left: 2px;
+}
+.activityName {
+    color: black
+    
+}
+
+.individualContainer {
+    background-color: #587cf5;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.showbox{
+    display: flex;
+    height: 50%;
+    width: 50%;
+    background-color: #7ecce6;
+    justify-content: center;
+    align-items: center; 
+    border: 10px double black;
+}
+.iaText {
+    
+}
 
 .RoutineHeader{
     display: grid;
@@ -171,23 +225,4 @@
   color: #888;
   pointer-events: none;
 }
-/* 
-#header {
-    width: 100%;
-    background-color: rgb(107, 231, 231);
-    text-decoration: none;   
-    display:inline-flex;
-    flex-direction: row;
-    height: 19vh;
-    justify-content: space-between;
-    padding: 4px;
-    align-items: center;
-    box-shadow: 1px 1px 15px rgb(150, 223, 252);
-    position: fixed;
-    z-index: 1;
-} */
-/* .header{
-    color: rgb(2, 3, 3);
-    text-decoration: underline;
-    font-family: Indie Flower;
-} */
+

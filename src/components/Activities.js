@@ -10,7 +10,7 @@ const Header = styled.header`
   font-size: 20px;
   text-align: center;
   padding: 0.25em 0;
-  background: #033a8d;;
+  background: #033a8d;
   color: #fafafa;
 `;
 
@@ -20,41 +20,52 @@ const Container = styled.header`
 `;
 
 const Activities = ({userToken, allActivities, setAllActivities, setSelectedAct,activityID}) => {
-  
+
   return ( 
     <Container>
-    <div className="allActivitiesContainer">
-      <div className="activity">
-        {allActivities.map(act=> {
-              return (
-                <div className="allActivities" key={act.id}>
-                <h3 className="activityTitle"
-                  onClick={() => {
-                    activityID(act.id)
-                    setSelectedAct(act.id)
-                    }}>
-                  <Link to={`/activities/${act.id}`} className="activityLink">
-                    {act.name}
-                  </Link>
-                </h3>
-                  <p className="description">{act.description}</p>
-                </div>)
-              })
-            }
+      <Header><h1>All Activities</h1></Header>
+      <div className="allActivities">
+        <div className="activity">
+          
+          {allActivities.map(act=> {
+                return (
+                  <div className="activityContainer">
+                    <div className="activityBody">
+                      <div className="activityHeader">
+                        <div className="activityDescription">
+                          <div className='innerbox'>  
+                            <div className='innerboxText' style={{fontWeight:"bolder", color:"black"}}
+                                onClick={() => {
+                                activityID(act.id)
+                                setSelectedAct(act.id)
+                                }}>
+                              <Link to={`/activities/${act.id}`} className="activityLink">
+                                {act.name}
+                              </Link>
+                            </div>
+                              <div className='innerboxText'>{act.description}</div>
+                          </div>
+                        </div>  
+                      </div>  
+                    </div>    
+                  </div>
+                  )
+                })
+              }
 
+        </div>
+        {userToken?
+          (
+            <div className="allActAside">
+          <MakeActivities
+            userToken={userToken}
+            allActivities={allActivities}
+            setAllActivities={setAllActivities}/>
+        </div>
+          ):
+            (<div></div>)
+        }
       </div>
-       {userToken?
-        (
-          <div className="allActAside">
-        <MakeActivities
-          userToken={userToken}
-          allActivities={allActivities}
-          setAllActivities={setAllActivities}/>
-      </div>
-        ):
-          (<div></div>)
-      }
-    </div>
     </Container>
   )
 }

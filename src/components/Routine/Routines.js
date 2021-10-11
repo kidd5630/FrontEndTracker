@@ -34,15 +34,12 @@ const Routines = ({routine, userToken, setallroutines, setusersRoutines, allRout
          <div className="routinebody">
          <div className="RoutineHeader">
              <div className='RoutineDescription'>
-                <div className='innerbox'>
-                     
-                <div className='innerboxText' style={{fontWeight:"bolder"}}> Routine: {routine.name}  </div>
-                <div className='innerboxText'> Goal: {routine.goal} </div>
-                
+                <div className='innerbox'>     
+                  <div className='innerboxText' style={{fontWeight:"bolder"}}> Routine: {routine.name}  </div>
+                  <div className='innerboxText'> Goal: {routine.goal} </div>
                 </div>
                 <div className='innerboxText'> By: {routine.creatorName}</div>
-                
-            </div>
+              </div>
          {userToken? <div className="RoutineButtons"> <RoutineDelete 
                 routineToDelete ={routine.id}
                 userToken={userToken}
