@@ -7,9 +7,11 @@ import Button from "@material-ui/core/Button";
 import styled from "styled-components";
 import {
     BASE_URL,
-    fetchLoginUser
+    fetchLoginUser,
+    fetchUsersRoutines
 } from '../api';
 
+<<<<<<< HEAD
 const Modal = styled.div`
   position: absolute;
   top: 0;
@@ -86,6 +88,9 @@ const FooterButton = styled.div`
 
 
 const Login = ({setMyPassword, myPassword, setMyUsername, myUsername, setUserToken}) => {
+=======
+const Login = ({setMyPassword, myPassword, setusersRoutines, setMyUsername, myUsername, setUserToken}) => {
+>>>>>>> 0351dbe4e02cbfd575c1a36f77b40750088fe403
 
     let history = useHistory();
     
@@ -99,6 +104,8 @@ const Login = ({setMyPassword, myPassword, setMyUsername, myUsername, setUserTok
                 setMyUsername(myUsername);
                 localStorage.setItem('userToken', token);
                 localStorage.setItem('myUsername', JSON.stringify(myUsername));
+                const routines = await fetchUsersRoutines(myUsername, token)
+                setusersRoutines(routines)
                 history.push("/");
             } else {
                 alert("Your Username Or Password Is Incorrect");

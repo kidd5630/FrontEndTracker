@@ -85,9 +85,10 @@ const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setall
         const startIndex = currentPage * dataLimit - dataLimit;
         const endIndex = startIndex + dataLimit;
         if(currentPage>pages){
-          return pageRoutines.slice(0,10)
+          return pageRoutines.slice(0,10);
         }
         else{
+          
         return pageRoutines.slice(startIndex, endIndex);
         }
       };

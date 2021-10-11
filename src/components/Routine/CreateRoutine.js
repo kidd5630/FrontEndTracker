@@ -166,7 +166,7 @@ const CreateRoutine = ({userToken, myUsername, setallroutines, setusersRoutines,
                 <Label>Goal*</Label>
                 <Input
                   type="text"
-                  placeholder="Public"
+                  placeholder="Goal"
                   required="required"
                   value={goal}
                   onChange={(e) => setgoal(e.target.value)}
