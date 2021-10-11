@@ -1,11 +1,28 @@
 import React, { useState }from 'react';
 import { Link } from 'react-router-dom';
-
+import styled from "styled-components";
 import MakeActivities from './MakeActivities';
+
+const Header = styled.header`
+  font-family: "Akaya Telivigala", cursive;
+  font-weight: 100;
+  font-style: italic;
+  font-size: 20px;
+  text-align: center;
+  padding: 0.25em 0;
+  background: #033a8d;;
+  color: #fafafa;
+`;
+
+const Container = styled.header`
+  background: #587cf5;
+  color: #fafafa;
+`;
 
 const Activities = ({userToken, allActivities, setAllActivities, setSelectedAct,activityID}) => {
   
   return ( 
+    <Container>
     <div className="allActivitiesContainer">
       <div className="activity">
         {allActivities.map(act=> {
@@ -38,6 +55,7 @@ const Activities = ({userToken, allActivities, setAllActivities, setSelectedAct,
           (<div></div>)
       }
     </div>
+    </Container>
   )
 }
   
