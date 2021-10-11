@@ -77,7 +77,7 @@ const App = () => {
 
 				{userToken
 				?
-				(<div>
+				(<div className="backdrop">
 					<Switch>	
 						<Route exact path ="/">
 							<Home 
@@ -146,7 +146,7 @@ const App = () => {
 					</Switch>
 				</div>)	
 				: 
-				(<div>
+				(<div className="backdrop" >
 					<Switch>
 						<Route exact path ="/">
 							<Home 
@@ -222,6 +222,8 @@ const App = () => {
 				</div>)
 				}
 				
+				
+			
 			</div>
 	</Router>
 	)
