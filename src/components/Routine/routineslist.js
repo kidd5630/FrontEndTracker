@@ -48,7 +48,7 @@ const Button = styled.button`
 const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setallroutines, setusersRoutines, pageRoutines, usersRoutines}) => {
     const dataLimit = 10;
     const pageLimit = 5;
-    const [pages, setPages] = useState(Math.round(pageRoutines.length/10))
+    const [pages, setPages] = useState( Math.round(pageRoutines.length/10))
     const [currentPage, setCurrentPage] =useState(1)
 
 
