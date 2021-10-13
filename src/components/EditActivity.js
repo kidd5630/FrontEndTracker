@@ -3,33 +3,29 @@ import {
     editThisActivity, 
     BASE_URL
 } from '../api'
-
-
-const EditActivity = ({allActivities, setAllActivities, userToken, selectedAct, ToggleClass}) => {
-
+const EditActivity = ({allActivities, setAllActivities, userToken, selectedAct, ToggleClass, activityName, setActivityName, setActivityDescript}) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    
-    
     function resetForm() {
         setName('');
         setDescription('');
     }
-
     async function edit(e) {
         e.preventDefault();
             try {
                 const results = await editThisActivity(BASE_URL, selectedAct, userToken, name, description);
                 if(results.id) {
+                    setActivityName(results.name)
+                    setActivityDescript(results.description)
                     setAllActivities([...allActivities]);
+                    location.reload()
                     ToggleClass();
                     resetForm();
                 }
             } catch(error) {
                 console.error(error)
-        }
+            }
     }
-    
     return (
         <section className="editActivityAside">
             <h1 className="editActivity">Edit Here</h1>
@@ -59,6 +55,4 @@ const EditActivity = ({allActivities, setAllActivities, userToken, selectedAct, 
         </section>
     )
 }
-
-
 export default EditActivity;

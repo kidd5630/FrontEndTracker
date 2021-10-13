@@ -1,6 +1,4 @@
 export const BASE_URL = 'https://fitnesstrac-kr.herokuapp.com/api';
-
-
 export async function fetchResgisterUser(url, username, password) {
     try {
         const response = await fetch(`${url}/users/register`, {
@@ -19,7 +17,6 @@ export async function fetchResgisterUser(url, username, password) {
         console.error(error);
     }
 }
-
 export async function fetchLoginUser(url, username, password) {
     try {
         const response = await fetch(`${url}/users/login`, {
@@ -36,9 +33,8 @@ export async function fetchLoginUser(url, username, password) {
         return data
     } catch (error) {
         console.error(error);
-      }   
+    }   
 }
-
 export async function fetchAllActivities(){
     try{
         const response = await fetch(`${BASE_URL}/activities`)
@@ -49,7 +45,6 @@ export async function fetchAllActivities(){
         console.error(error);
     }
 }
-
 export async function createActivity( url, userToken, name, description) {
     const actObj = {
         "name": name,
@@ -72,7 +67,6 @@ export async function createActivity( url, userToken, name, description) {
         console.error(error);
     } 
 }
-
 export async function fetchAllRoutines(){
     try{
         const response = await fetch(`${BASE_URL}/routines`)
@@ -82,13 +76,12 @@ export async function fetchAllRoutines(){
         console.error(error)
     }
 }
-
 export async function fetchUsersRoutines(username, userToken){
       try{
           const headers = {
             headers: {
-            "Content-Type": "application/json",
-             Authorization: `Bearer ${userToken}`,
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${userToken}`,
             },
         };
         const response = await fetch(`${BASE_URL}/users/${username}/routines`, headers)
@@ -96,8 +89,8 @@ export async function fetchUsersRoutines(username, userToken){
         return results
     }catch(error){
         console.error(error)
-    }}
-
+    }
+}
 export async function editThisActivity( url, selectedAct, userToken, name, description) {
     const actObj = { } 
     if(name) {
@@ -123,10 +116,7 @@ export async function editThisActivity( url, selectedAct, userToken, name, descr
         console.error(error);
     } 
 }
-
-
 export async function fetchRoutinesFeature(url, selectedAct) {
-    
     try {
         const response = await fetch(`${url}/activities/${selectedAct}/routines`, {
             headers: {
