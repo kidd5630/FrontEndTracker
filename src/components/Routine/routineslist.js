@@ -173,9 +173,6 @@ const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setall
         next
       </button>
     </div>
-
-
-
         </Container>
     )
 }

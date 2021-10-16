@@ -4,9 +4,6 @@ import {removeCurrentUserToken, removeCurrentUsername}
 from '../auth'
 import styled from "styled-components";
 import LogoutIcon from '@mui/icons-material/Logout';
-
-
-
 const Top = styled.header`
   font-family: "Akaya Telivigala", cursive;
   font-weight: 100;
@@ -14,40 +11,44 @@ const Top = styled.header`
   font-size: 25px;
   text-align: center;
   padding: 0.25em 0;
-  background: #033a8d;;
+  background: #033a8d;
   color: #fafafa;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  z-index: 100;
 `;
-
 const Header = ({userToken, setUserToken, setMyUsername}) => {
-let history = useHistory()	
+    let history = useHistory()	
     return(
         <>
-        <Top>
-            {userToken? <nav>
-                <div className="header">
-                    <ul>
-                        <Link to="/home">
-                        <li className="navBtn">Home</li>
-                        </Link>
-                        <Link to="/myroutines">
-                        <li className="navBtn">My Routines</li>
-                        </Link>
-                        <Link to="/routines">
-                        <li className="navBtn">All Routines</li>
-                        </Link>
-                        <Link to="/activities">
-                        <li className="navBtn">Activities</li>
-                        </Link>
-                        <button className="logOut"
-                            onClick={() => {
-                            setUserToken(removeCurrentUserToken());
-                            setMyUsername(removeCurrentUsername());
-                        history.push("/");
-                        }}><LogoutIcon></LogoutIcon> LOGOUT
-                        </button>
-                    </ul>
-                </div>
-                </nav>
+            <Top>
+                {userToken? 
+                    <div className="header">
+                        <nav>
+                            <ul>
+                                <Link to="/home">
+                                <li className="navBtn">Home</li>
+                                </Link>
+                                <Link to="/myroutines">
+                                <li className="navBtn">My Routines</li>
+                                </Link>
+                                <Link to="/routines">
+                                <li className="navBtn">All Routines</li>
+                                </Link>
+                                <Link to="/activities">
+                                <li className="navBtn">Activities</li>
+                                </Link>
+                                <button className="logOut"
+                                    onClick={() => {
+                                    setUserToken(removeCurrentUserToken());
+                                    setMyUsername(removeCurrentUsername());
+                                history.push("/");
+                                }}><LogoutIcon></LogoutIcon> LOGOUT
+                                </button>
+                            </ul>
+                        </nav>
+                    </div>
                 :
                 <nav>
                     <div className="header">
@@ -70,11 +71,10 @@ let history = useHistory()
                         </ul>
                     </div>
                 </nav>
-            }
-        </Top>
-    </>
+                }
+            </Top>
+        </>
     ) 
 }
-
 export default Header;
 

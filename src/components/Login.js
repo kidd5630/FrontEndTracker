@@ -10,7 +10,6 @@ import {
     fetchLoginUser,
     fetchUsersRoutines
 } from '../api';
-
 const Modal = styled.div`
   position: absolute;
   top: 0;
@@ -20,10 +19,8 @@ const Modal = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  
   backdrop-filter: blur(6px);
 `;
-
 const Content = styled.div`
   font-family: "ABeeZee", sans-serif;
   width: 480px;
@@ -34,7 +31,6 @@ const Content = styled.div`
   box-shadow: 0 2px 12px -8px black;
   border-radius: 2%;
 `;
-
 const Heading = styled.div`
   height: 36px;
   display: flex;
@@ -43,15 +39,12 @@ const Heading = styled.div`
   font-size: 24px;
   border-bottom: 1px solid #888;
 `;
-
 const Form = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
 const Label = styled.label`
 `;
-
 const Input = styled.input`
   height: 1.5rem;
   background: #ddd;
@@ -60,13 +53,11 @@ const Input = styled.input`
   font-size: 22px;
   margin-bottom: 8px;
 `;
-
 const Footer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 `;
-
 const FooterButton = styled.div`
   margin-top: 12px;
   display: flex;
@@ -79,18 +70,12 @@ const FooterButton = styled.div`
   align-items: center;
   height: 36px;
   width: 100px;
-
   a:visited {
     color: white;
   }
 `;
-
-
-
 const Login = ({setMyPassword, myPassword, setusersRoutines, setMyUsername, myUsername, setUserToken}) => {
-
     let history = useHistory();
-    
     async function loginUser(event) {
         event.preventDefault();
         try {
@@ -111,73 +96,71 @@ const Login = ({setMyPassword, myPassword, setusersRoutines, setMyUsername, myUs
             console.error(error);
         } 
     }
-
     return (
         <div className="background"
-        style={{backgroundColor:"blue"}}>
-        <Modal>
-        <Content>
-        <section className="loginContainer">
-            <Heading>{<h1 className="loginTitle">Login</h1>}</Heading>
-            <Form>    
-                <form className="loginForm" onSubmit={loginUser}>
-                    <div>
-                        <Label>Username:</Label>
-                        <Input 
-                        type="username" 
-                        placeholder="Username" 
-                        className="loginInput" 
-                        onChange={(event) => {setMyUsername(event.target.value)}} 
-                        required/>
-                    </div>
-                    <div>
-                        <Label>Password:</Label>
-                        <Input type="password" 
-                        placeholder="Password" 
-                        className="loginInput" 
-                        onChange={(event) => {setMyPassword(event.target.value)}} 
-                        required/>
-                    </div>
-                    <Footer>
-                        <FooterButton>
-                            <CheckRoundedIcon
-                                style={{ color: "white", fontSize: 30 }}
-                            ></CheckRoundedIcon>
-                            <Button
-                                variant="contained"
-                                style={{
-                                textDecoration: "none",
-                                backgroundColor: "black",
-                                color: "white",
-                                }}
-                                className="btn btn-primary"
-                                type="submit"
-                            >
-                                LOGIN
-                            </Button>
-                        </FooterButton>
-                        <FooterButton>
-                            <CloseRoundedIcon
-                                style={{ color: "white", fontSize: 30 }}
-                            ></CloseRoundedIcon>{" "}
-                            <Link
-                                to="/"
-                                style={{ textDecoration: "none" }}
-                                className="btn btn-primary"
-                                onClick={() => {}}
-                            >
-                                Cancel
-                            </Link>
-                        </FooterButton>
-                    </Footer>
+            style={{backgroundColor:"blue"}}>
+            <Modal>
+                <Content>
+                    <section className="loginContainer">
+                        <Heading>{<h1 className="loginTitle">Login</h1>}</Heading>
+                        <Form>    
+                                <form className="loginForm" onSubmit={loginUser}>
+                                    <div>
+                                        <Label>Username:</Label>
+                                        <Input 
+                                            type="username" 
+                                            placeholder="Username" 
+                                            className="loginInput" 
+                                            onChange={(event) => {setMyUsername(event.target.value)}} 
+                                        required/>
+                                    </div>
+                                    <div>
+                                        <Label>Password:</Label>
+                                        <Input type="password" 
+                                        placeholder="Password" 
+                                        className="loginInput" 
+                                        onChange={(event) => {setMyPassword(event.target.value)}} 
+                                        required/>
+                                    </div>
+                                    <Footer>
+                                        <FooterButton>
+                                            <CheckRoundedIcon
+                                                style={{ color: "white", fontSize: 30 }}
+                                            ></CheckRoundedIcon>
+                                            <Button
+                                                variant="contained"
+                                                style={{
+                                                textDecoration: "none",
+                                                backgroundColor: "black",
+                                                color: "white",
+                                                }}
+                                                className="btn btn-primary"
+                                                type="submit"
+                                            >
+                                                LOGIN
+                                            </Button>
+                                        </FooterButton>
+                                        <FooterButton>
+                                            <CloseRoundedIcon
+                                                style={{ color: "white", fontSize: 30 }}
+                                            ></CloseRoundedIcon>{" "}
+                                            <Link
+                                                to="/"
+                                                style={{ textDecoration: "none" }}
+                                                className="btn btn-primary"
+                                                onClick={() => {}}
+                                            >
+                                                Cancel
+                                            </Link>
+                                        </FooterButton>
+                                    </Footer>
                     
-                </form>
-            </Form>    
-        </section>
-        </Content>
-        </Modal>
+                                </form>
+                        </Form>    
+                    </section>
+                </Content>
+            </Modal>
         </div>
     ) 
 }
-
 export default Login; 

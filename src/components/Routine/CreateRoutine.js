@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router";
-
 
 const Modal = styled.div`
   position: absolute;
@@ -16,10 +15,8 @@ const Modal = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  
   backdrop-filter: blur(6px);
 `;
-
 const Content = styled.div`
   font-family: "ABeeZee", sans-serif;
   width: 480px;
@@ -30,7 +27,6 @@ const Content = styled.div`
   box-shadow: 0 2px 12px -8px black;
   border-radius: 2%;
 `;
-
 const Heading = styled.div`
   height: 36px;
   display: flex;
@@ -39,7 +35,6 @@ const Heading = styled.div`
   font-size: 24px;
   border-bottom: 1px solid #888;
 `;
-
 const Form = styled.div`
   display: flex;
   flex-direction: column;
@@ -60,15 +55,11 @@ const Input = styled.input`
   font-size: 22px;
   margin-bottom: 8px;
 `;
-
-const RadioInput = styled.input``;
-
 const Footer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 `;
-
 const FooterButton = styled.div`
   margin-top: 12px;
   display: flex;
@@ -81,72 +72,66 @@ const FooterButton = styled.div`
   align-items: center;
   height: 36px;
   width: 100px;
-
   a:visited {
     color: white;
   }
 `;
-
-
 const CreateRoutine = ({userToken, myUsername, setallroutines, setusersRoutines, allroutines, usersRoutines}) =>{
-    const [name, setname] = useState('')
-    const [goal, setgoal] = useState('')
-    const [isPublic, setisPublic] =  useState(false)
-    const [createSuccess, setcreateSucess] = useState(false)
-    const history = useHistory()
-    const validationHandler = () => {
+  const [name, setname] = useState('')
+  const [goal, setgoal] = useState('')
+  const [isPublic, setisPublic] =  useState(false)
+  const [createSuccess, setcreateSucess] = useState(false)
+  const history = useHistory()
+  const validationHandler = () => {
     if (name.length > 0 && goal.length > 0) {
       return true;
     }
     return false;
   };
-    useEffect(()=>{
-        if(!userToken){
-            history.push('/home')
-        }
+  useEffect(()=>{
+    if(!userToken){
+      history.push('/home')
     }
-    )
-    const handleOnCheck = () => {
-            setisPublic(!isPublic)
-        };
-    const postHandler = async(e) =>{
-        e.preventDefault()
-        if(validationHandler()){
-            try {
-
-            setcreateSucess(false)
-           const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/routines',{
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${userToken}`
-                    },
-                    body: JSON.stringify({
-                            name: name,
-                            goal: goal,
-                            isPublic: isPublic
-                        })
-            })
-              
-            const obj = await response.json()
-            obj.creatorName = myUsername
-            setallroutines([obj,...allroutines])
-            setusersRoutines([obj,...usersRoutines])
-            setname('')
-            setgoal('')
-            setisPublic(false)
-            setcreateSucess(true)
-            } catch(error){
-                console.error(error)
-            }
-        }
+  })
+  const handleOnCheck = () => {
+    setisPublic(!isPublic)
+  };
+  const postHandler = async(e) =>{
+    e.preventDefault()
+    if(validationHandler()){
+      try {
+        setcreateSucess(false)
+        const response = await fetch('https://fitnesstrac-kr.herokuapp.com/api/routines',{
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${userToken}`
+          },
+          body: JSON.stringify({
+                  name: name,
+                  goal: goal,
+                  isPublic: isPublic
+          })
+        })
+        const obj = await response.json()
+        obj.creatorName = myUsername
+        setallroutines([obj,...allroutines])
+        setusersRoutines([obj,...usersRoutines])
+        setname('')
+        setgoal('')
+        setisPublic(false)
+        setcreateSucess(true)
+      } catch(error){
+        console.error(error)
+      }
     }
-    if(createSuccess){
-        history.push('/myroutines')
-    }
-
-    return (
-      <Modal>
+  }
+  
+  if(createSuccess){
+    history.push('/myroutines')
+  }
+  return (
+    <Modal>
       <Content>
         <section className="NewRoutine">
           <Heading>{<h3>New Routine</h3>}</Heading>
@@ -219,8 +204,6 @@ const CreateRoutine = ({userToken, myUsername, setallroutines, setusersRoutines,
         </section>
       </Content>
     </Modal>
-    )
-
+  )
 }
-
 export default CreateRoutine;

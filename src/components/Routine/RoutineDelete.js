@@ -11,61 +11,45 @@ const Button = styled.button`
   height: 36px;
   width: 36px;
   color: white;
-
   a:visited {
     color: white;
   }
 `;
-
-
 const RoutineDelete= ({routineToDelete, userToken, setallroutines, setusersRoutines, allRoutines, usersRoutines}) => {
-
-    const deleteHandler = async (routineToDelete) =>{
-        const response = await fetch(`https://fitnesstrac-kr.herokuapp.com/api/routines/${routineToDelete}`, {
-            method: "DELETE",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${userToken}`
-            }
-            })
-        const data = await response.json();
-        if(data){
-            const newallRoutines = allRoutines.filter((routine)=>
-            {return routine.id !==routineToDelete}
-            )
-            const newuserRoutines = usersRoutines.filter((routine)=>
-            {return routine.id !==routineToDelete}
-            ) 
-            setallroutines(newallRoutines)
-            setusersRoutines(newuserRoutines)
-        }
+  const deleteHandler = async (routineToDelete) =>{
+    const response = await fetch(`https://fitnesstrac-kr.herokuapp.com/api/routines/${routineToDelete}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`
+      }
+    })
+    const data = await response.json();
+    if(data){
+      const newallRoutines = allRoutines.filter((routine)=>
+      {return routine.id !==routineToDelete}
+      )
+      const newuserRoutines = usersRoutines.filter((routine)=>
+      {return routine.id !==routineToDelete}
+      ) 
+      setallroutines(newallRoutines)
+      setusersRoutines(newuserRoutines)
     }
-
-    return (
-         <div>
-    <Button
+  }
+  return (
+    <div>
+      <Button
         title="Delete Routine"
         type="button"
         className="btn btn-delete"
-        onClick={() => deleteHandler(routineToDelete)}
+        onClick={() => 
+          deleteHandler(routineToDelete)}
       >
         <DeleteForeverRoundedIcon
           style={{ color: "white", fontSize: 30 }}
         ></DeleteForeverRoundedIcon>{" "}
       </Button>
-      </div>
-    )
+    </div>
+  )
 }
-
 export default RoutineDelete;
-// const deleteHandler = async (postToDelete) => {
-//     const response = await fetch(
-//       `https://strangers-things.herokuapp.com/api/2105-VPI-RM-WEB-PT/posts/${postToDelete}`,
-//       {
-//         method: "DELETE",
-//         headers: {
-//           "Content-Type": "application/json",
-//           Authorization: `Bearer ${jwttoken}`,
-//         },
-//       }
-//     );

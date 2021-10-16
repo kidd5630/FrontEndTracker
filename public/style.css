@@ -4,13 +4,10 @@
 	padding:0;
 	box-sizing: border-box;
 } 
-
-
 #header {
-    background-color: rgb(3, 58, 141);
+    background-color: #033a8d;
     display: flex;
     justify-content: flex-end;
-
 }
 .navBtn {
     color: white;
@@ -19,10 +16,8 @@
     font-family: "Akaya Telivigala";
     font-size: medium;
 }
-
-.home{
-    background-color: #033a8d;
-    position: fixed;
+.home {
+    background-color: #587cf5;
     display: flex;
     height: 100vh;
     width: 100%;
@@ -32,22 +27,91 @@
     font-family: "Akaya Telivigala";
     font-size: xx-large;
 }
-
-/* .activity{
-	margin-top: 15px;
-	border-top: solid gray 5px;
-    width: 100vw;
-    overflow: scroll;
-    height: 80vh;
-} */
-
-/* .editFeild-inactive{
+.editFeild-inactive{
     display: none;
 }
 .editFeild-active{
     display: active;
-} */
-
+}
+.activity {
+    background-color: #587cf5;
+}
+.allActAside {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    border: 5px double black;
+    width: 50%;
+}
+.activityContainer {
+    display: grid;
+    grid-template-columns: 15% 1fr 15% ;
+}
+.activityBody {
+    border: solid black 2px;
+    margin:5px 5px 5px 5px;
+    grid-column: 2/3;
+    background-color: #7ecce6;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color:black
+}
+.activityHeader {
+    display: grid;
+    font-size: larger;
+    grid-column: 1/3;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-right: 2px;
+}
+.activityDescription{
+    border: 2px solid black;
+    display: flex;
+    grid-column: 1/4;
+    flex-direction: column;
+    margin-left: 2px;
+}
+.activityLink {
+    color: black;
+    text-decoration: none;
+}
+.individualContainer {
+    background-color: #587cf5;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+}
+.showbox{
+    height: 50%;
+    width: 50%;
+    background-color: #7ecce6;
+    border: 10px double black;
+    padding:10px;
+}
+.iaText {
+    padding-top: 10px;
+}
+.featuredList{
+    padding-top: 40px;
+}
+.makeActAside {
+    border: double black 6px;
+    margin:5px 5px 5px 5px;
+    grid-column: 2/3;
+    background-color: #7ecce6;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color:black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.makeActInput {
+    align-self: flex-end;
+}
 .RoutineHeader{
     display: grid;
     font-size: larger;
@@ -59,7 +123,6 @@
     display: flex;
     grid-column: 1/4;
     flex-direction: column;
-
     margin-left: 2px;
 }
 .RoutineButtons{
@@ -69,14 +132,16 @@
     margin-left: auto;
     padding-right: 1px;
 }
+.innerText{
+    justify-content: center;
+    margin-left: 5px;
+}
 .innerbox{
     display: flex;
     flex-direction: column;
-    
 }
 .innerboxText{
     margin-left: 5px;
-    
 }
 .inputs{
     display: grid;
@@ -86,19 +151,16 @@
 .inputs label{
     text-align: right;
 }
-
 #activitiesselect{
     width: 200px;
     text-overflow: ellipsis;
 }
-
 .activityButtons{
     grid-template-columns: 1fr 1fr 1fr 15%;
     display: grid;
     margin-left: 2px;
     padding-top: 1px;
 }
-
 .activityUpdates{
     display: flex;
     flex-direction: row;
@@ -113,18 +175,19 @@
     padding-right: 1px;
     padding-top: 1px;
     margin-top: 2px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 }
 .activitytext{
     text-overflow: ellipsis;
     overflow: hidden;
     padding: 1px;
 }
-
 .routineContainer{
     display: grid;
     grid-template-columns: 15% 1fr 15% ;
 }
-
 .routinebody{
     border: solid black 2px;
     margin:5px 5px 5px 5px;
@@ -134,17 +197,14 @@
     padding-bottom: 2px;
     color:black
 }
-
 .loggedinMessage{
     font-family: "Akaya Telivigala";
 }
-
 .pagination{
    display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .paginationItem {
   background: #fff;
   border: 2px solid #666;
@@ -173,25 +233,5 @@
 }
 .backdrop{
     height: 100vh;
-    background-color: rgb(3, 58, 141)
+    background-color: #587cf5;
 }
-/* 
-#header {
-    width: 100%;
-    background-color: rgb(107, 231, 231);
-    text-decoration: none;   
-    display:inline-flex;
-    flex-direction: row;
-    height: 19vh;
-    justify-content: space-between;
-    padding: 4px;
-    align-items: center;
-    box-shadow: 1px 1px 15px rgb(150, 223, 252);
-    position: fixed;
-    z-index: 1;
-} */
-/* .header{
-    color: rgb(2, 3, 3);
-    text-decoration: underline;
-    font-family: Indie Flower;
-} */
