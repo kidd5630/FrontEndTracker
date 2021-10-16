@@ -48,14 +48,15 @@ const Button = styled.button`
 const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setallroutines, setusersRoutines, pageRoutines, usersRoutines}) => {
     const dataLimit = 10;
     const pageLimit = 5;
-    const [pages, setPages] = useState( Math.round(pageRoutines.length/10))
+    console.log(usersRoutines,">>>>>")
+    const [pages, setPages] = useState( pageRoutines?Math.round(pageRoutines.length/10): 5)
     const [currentPage, setCurrentPage] =useState(1)
-
+    
 
 
      useEffect(() => {
         window.scrollTo({ behavior: 'smooth', top: '0px' });
-        setPages(Math.ceil(pageRoutines.length/10))
+        setPages(Math.ceil(pageRoutines? pageRoutines.length/10: 5))
       }, [currentPage, pageRoutines]);
       
       
@@ -85,11 +86,11 @@ const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setall
         const startIndex = currentPage * dataLimit - dataLimit;
         const endIndex = startIndex + dataLimit;
         if(currentPage>pages){
-          return pageRoutines.slice(0,10);
+          return pageRoutines? pageRoutines.slice(0,10): null;
         }
         else{
           
-        return pageRoutines.slice(startIndex, endIndex);
+        return pageRoutines? pageRoutines.slice(startIndex, endIndex):null;
         }
       };
     const getPaginationGroup = () => {
@@ -128,7 +129,7 @@ const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setall
         <AddCircleOutlineIcon style ={{color:'black', fontSize:70}}>
         </AddCircleOutlineIcon></Button></Link>: null}
           <div>
-            {getPaginatedData().map((routine)=>
+            {getPaginatedData()?getPaginatedData().map((routine)=>
             {return (<Routines
             pageRoutines={pageRoutines}
             routine ={routine} 
@@ -140,7 +141,7 @@ const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setall
             setusersRoutines={setusersRoutines}
             allActivities={allActivities}
             />)}
-            )}
+            ):null}
           </div>
         </div>
         
