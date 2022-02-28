@@ -86,11 +86,12 @@ const Routineslist = ({userToken, myUsername, allActivities, allRoutines, setall
         const startIndex = currentPage * dataLimit - dataLimit;
         const endIndex = startIndex + dataLimit;
         if(currentPage>pages){
-          return pageRoutines? pageRoutines.slice(0,10): null;
+          console.log(pageRoutines,"AFSAFDSAF")
+          return !!pageRoutines.length? pageRoutines.slice(0,10): null;
         }
         else{
           
-        return pageRoutines? pageRoutines.slice(startIndex, endIndex):null;
+        return !!pageRoutines.length? pageRoutines.slice(startIndex, endIndex):null;
         }
       };
     const getPaginationGroup = () => {
